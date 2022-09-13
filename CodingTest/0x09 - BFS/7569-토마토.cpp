@@ -13,25 +13,9 @@ int M, N, H;
 int countZero = 0;
 queue<pair<pair<int, int>, int>> q;
 
-int main(void) {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-
-	cin >> M >> N >> H;
-
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < M; j++) {
-			for (int k = 0; k < H; k++) {
-				cin >> board[i][j][k];
-
-				if (board[i][j][k] == -1)
-					countZero++;
-
-				else if (board[i][j][k] == 1)
-					q.push({ {i, j}, k });
-			}
-		}
-	}
+int BFS() {
+	if (countZero == 0)
+		return 0;
 
 	while (!q.empty()) {
 		pair<pair<int, int>, int> cur = q.front();
@@ -48,9 +32,36 @@ int main(void) {
 			if (board[nx][ny][nz] == 0) {
 				board[nx][ny][nz] = board[cur.first.first][cur.first.second][cur.second] + 1;
 				q.push({ {nx, ny}, nz });
+				countZero--;
+
+				if (countZero == 0)
+					return board[nx][ny][nz] - 1;
 			}
 		}
 	}
 
-	if (countZero == 0)
+	return -1;
+}
+
+int main(void) {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	cin >> M >> N >> H;
+
+	for (int k = 0; k < H; k++) {
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				cin >> board[i][j][k];
+
+				if (board[i][j][k] == 0)
+					countZero++;
+
+				else if (board[i][j][k] == 1)
+					q.push({ {i, j}, k });
+			}
+		}
+	}
+
+	cout << BFS();
 }

@@ -22,6 +22,7 @@ int main(void) {
 		}
 	}
 
+
 	for (int i = 1; i < 10001; i++) {
 		if (chk[i] == false) {
 			cout << i << '\n';

@@ -15,10 +15,15 @@
 *.sln.docstates
 
 #내가추가
+#visual studio
 *.vcxproj
 *.filters
 *.sln
 
+#CLion
+.idea
+cmake-build-debug
+CMakeLists
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

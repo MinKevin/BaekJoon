@@ -14,6 +14,7 @@ int BruteForce() {
 			char expectedColor;
 			int cnt = 0;
 			expectedColor = board[i][j];
+			//a
 			for (int x = i; x < i + 8; x++) {
 				for (int y = j; y < j + 8; y++) {
 					if (expectedColor != board[x][y]) 
@@ -22,11 +23,16 @@ int BruteForce() {
 					expectedColor = expectedColor == 'B' ? 'W' : 'B';
 				}
 			}
-			
+			//a
+
+			//b
 			if (cnt > 32)
 				cnt = 64 - cnt;
+			//b
 
+			//c
 			answer = min(answer, cnt);
+			//c
 		}
 	}
 	return answer;

@@ -1,7 +1,23 @@
 #include <stdio.h>
+#include <iostream>
+#include <vector>
+
+using namespace std;
 
 int main()
 {
+    string buf = "a" + 1;
+    cout << buf << '\n'; // 아무것도 출력되지 않음
+
+    /*
+    vector<int> v3 = {1,2,3};
+    vector<int> v4;
+    v4 = v3;
+    v4[2] = 10;
+    cout << v3[2];
+    */
+
+    /*
     int numArr[3][4] = {    // 세로 3, 가로 4 크기의 int형 2차원 배열 선언
         { 11, 22, 33, 44 },
         { 55, 66, 77, 88 },
@@ -23,6 +39,6 @@ int main()
 
     printf("%d\n", sizeof(numPtr));  // 4 : sizeof로 2차원 배열 포인터의 크기를 
                                      // 구하면 포인터의 크기가 출력됨(64비트라면 8)
-
+    */
     return 0;
 }

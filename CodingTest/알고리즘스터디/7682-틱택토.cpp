@@ -72,7 +72,7 @@ int main(void) {
 			else if (inp[i] == 'O')
 				cntO++;
 		}
-
+		  
 		//https://lollolzkk.tistory.com/12
 		int locDot = inp.find('.');
 		if (locDot != string::npos) {//find 함수는 targetChar이 존재 하지 않으면 쓰레기 값(string::npos)를 return (NULL이 아님)
@@ -87,10 +87,10 @@ int main(void) {
 		else {
 			if (cntX == cntO + 1) {
 				Check();
-				if (findOLine == true)
-					answer = false;
-				else
+				if (findOLine == false)
 					answer = true;
+				else
+					answer = false;
 			}
 			else
 				answer = false;

@@ -13,7 +13,7 @@ int main(void)
 	cin >> N >> K;
 
 	int lo = 1, result = 0;
-	long hi = N * N, mid;
+	long hi = K, mid;
 	while (1) {
 		int cnt = 0;
 

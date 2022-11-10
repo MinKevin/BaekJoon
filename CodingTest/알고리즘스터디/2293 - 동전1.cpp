@@ -1,3 +1,4 @@
+//221109
 #include <iostream>
 #include <vector>
 
@@ -17,15 +18,15 @@ int main(void) {
 		cin >> buf;
 		v.push_back(buf);
 	}
-
 	vector<int> memoization(K + 1, 0);
 	memoization[0] = 1;
 
-	for (int i = 0; i < N; i++)
-		for (int j = 1; j < K + 1; j++) {
-			if (j - v[i] >= 0)
-				memoization[j] += memoization[j - v[i]];
+	for (int i = 0; i < N; i++) {
+		for (int j = 1; j <= K; j++) {
+			memoization[j] += memoization[j - v[i]];
 		}
+	}
+
 
 	cout << memoization[K];
 }

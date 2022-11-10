@@ -40,7 +40,7 @@ void Check() {
 			else
 				findOLine = true;
 		}
-	}
+	} 
 	//¿­
 	for (int i = 0; i < 3; i++) {
 		ansChar = inp[i];

@@ -1,21 +1,21 @@
 //221111
 #include <iostream>
 #include <vector>
-#include <deque>
+#include <queue>
 #include <cstring>
 
 using namespace std;
 
 struct Data {
-	int m, s, d;
-	int cntBall = 1, trial = 0;
-	bool isOdd = false;
-	bool isEven = false;
+	int r, c, d;
+	int m, s;
+	int trial = 0;
 };
 
 int N, M, K;
 int infoSize;
-deque<Data> board[50][50];
+queue<int> board[50][50];
+vector<Data> info;
 int vis[50][50];
 
 int dy[8] = { 0, 1, 1, 1, 0, -1, -1, -1 };
@@ -31,37 +31,31 @@ void func() {
 		//	}
 		//	cout << '\n';
 		//}
-
+		bool isOdd = false;
+		bool isEven = false;
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
 				if (vis[i][j] != 0) {
-					while (!board[i][j].empty() && board[i][j].front().trial == cnt) {
-						Data cur = board[i][j].front();
-						board[i][j].pop_front();
+
+					while (!board[i][j].empty()) {
+						if (cnt != info[board[i][j].front()].trial)
+							break;
+
+						int cur = board[i][j].front();
+						board[i][j].pop();
 						//요 아래 부분 수식 r과 c는 0 ~ N - 1인데 성립하는 이유 잘 생각해보자
 						//x % N일 경우 나올 수 있는 값은 0 ~ N - 1이기 때문에 성립하는 것도 하나의 이유
-						int nx = (i + (cur.s % N) * dx[cur.d] + N * 2) % N;
-						int ny = (j + (cur.s % N) * dy[cur.d] + N * 2) % N;
-						vis[nx][ny] = 1;
+						int nx = (info[cur].r + (info[cur].s % N) * dx[info[cur].d] + N * 2) % N;
+						int ny = (info[cur].c + (info[cur].s % N) * dy[info[cur].d] + N * 2) % N;
 
-						if (!board[nx][ny].empty() && board[nx][ny].back().trial == cnt + 1) {
-							Data cur2 = board[nx][ny].back();
-							cur2.m += cur.m;
-							cur2.s += cur.s;
-							cur2.cntBall++;
-							if (cur.d % 2 == 0)
-								cur2.isEven = true;
-							else
-								cur2.isOdd = true;
-							board[nx][ny].back() = cur2;
-						}
-						else {
-							if (cur.d % 2 == 0)
-								cur.isEven = true;
-							else
-								cur.isOdd = true;
-							board[nx][ny].push_back({ cur.m, cur.s, cur.d, 1, cur.trial + 1, cur.isOdd, cur.isEven });
-						}
+						//cout << nx << ' ' << ny << '\n';
+						Data dat;
+
+						dat.r = nx; dat.c = ny; dat.d = info[cur].d; dat.m = info[cur].m; dat.s = info[cur].s; dat.trial = info[cur].trial + 1;
+						//cout << dat.r << ' ' << dat.c << ' ' << dat.d << ' ' << dat.m << ' ' << dat.s << ' ' << dat.trial << '\n';
+						info.push_back(dat);
+						board[nx][ny].push(infoSize++);
+						vis[nx][ny] = 1;
 					}
 					if (board[i][j].empty())
 						vis[i][j] = 0;
@@ -69,7 +63,6 @@ void func() {
 			}
 		}
 		cnt++;
-
 		//cout << "second\n";
 		//for (int i = 0; i < N; i++) {
 		//	for (int j = 0; j < N; j++) {
@@ -77,40 +70,56 @@ void func() {
 		//	}
 		//	cout << '\n';
 		//}
-
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
-				if (vis[i][j] != 0 && board[i][j].front().cntBall != 1) {
-					Data cur = board[i][j].front();
-					board[i][j].pop_front();
+				if (vis[i][j] != 0) {
+					int mSum = 0;
+					int sSum = 0;
+					int evenOdd[2] = { 0, 0 };
+					int cntBall = 0;
 
-					//cout << cur.m << ' ' << cur.s << ' ' << cur.d << ' ' << cur.cntBall << ' ' << cur.trial << '\n';
+					if (board[i][j].size() <= 1)
+						continue;
 
-					Data dat;
-					if (cur.isEven == 0 || cur.isOdd == 0) { //모두 홀, 짝
-						for (int k = 0; k < 4; k++) {
-							dat.m = cur.m / 5; dat.s = cur.s / cur.cntBall; dat.d = 2 * k; dat.trial = cnt;
-							if (dat.m == 0)
-								break;
+					bool once = false;
+					while (!board[i][j].empty()) {
+						//cout << "있음\n";
+						if (cnt != info[board[i][j].front()].trial)
+							break;
+						once = true;
+						int cur = board[i][j].front();
+						board[i][j].pop();
 
-							board[i][j].push_back(dat);
-							//cout << dat.m << ' ' << dat.s << ' ' << dat.d << ' ' << cur.cntBall << ' ' << dat.trial << '\n';
+						cntBall++;
+						//cout << info[cur].m << '\n';
+						mSum += info[cur].m;
+						sSum += info[cur].s;
+						evenOdd[info[cur].d % 2]++;
+					}
+					if (once == false)
+						continue;
+
+					if (evenOdd[0] == 0 || evenOdd[1] == 0) {
+						for (int d = 0; d < 4; d++) {
+							Data dat;
+							dat.r = i; dat.c = j; dat.d = 2 * d; dat.m = mSum / 5; dat.s = sSum / cntBall; dat.trial = cnt;
+							//cout << dat.r << ' ' << dat.c << ' ' << dat.d << ' ' << dat.m << ' ' << dat.s << ' ' << dat.trial << '\n';
+							info.push_back(dat);
+							board[i][j].push(infoSize++);
 						}
 					}
 					else {
-						for (int k = 0; k < 4; k++) {
-							dat.m = cur.m / 5; dat.s = cur.s / cur.cntBall; dat.d = 2 * k + 1; dat.trial = cnt;
-							if (dat.m == 0)
-								break;
-
-							board[i][j].push_back(dat);
-							//cout << dat.m << ' ' << dat.s << ' ' << dat.d << ' ' << cur.cntBall << ' ' << dat.trial << '\n';
+						for (int d = 0; d < 4; d++) {
+							Data dat;
+							dat.r = i; dat.c = j; dat.d = 2 * d + 1; dat.m = mSum / 5; dat.s = sSum / cntBall; dat.trial = cnt;
+							//cout << dat.r << ' ' << dat.c << ' ' << dat.d << ' ' << dat.m << ' ' << dat.s << ' ' << dat.trial << '\n';
+							info.push_back(dat);
+							board[i][j].push(infoSize++);
 						}
 					}
 				}
 			}
 		}
-
 		//cout << "third\n";
 		//for (int i = 0; i < N; i++) {
 		//	for (int j = 0; j < N; j++) {
@@ -131,9 +140,11 @@ int main(void) {
 	for (int i = 0; i < M; i++) {
 		int r, c;
 		cin >> r >> c >> dat.m >> dat.s >> dat.d;
-		r--; c--;
-		board[r][c].push_back(dat);
-		vis[r][c] = 1;
+		dat.r = r - 1;
+		dat.c = c - 1;
+		info.push_back(dat);
+		board[dat.r][dat.c].push(i);
+		vis[dat.r][dat.c] = 1;
 	}
 
 	//N = 50;
@@ -158,10 +169,27 @@ int main(void) {
 			if (vis[i][j] == 1)
 				while (!board[i][j].empty()) {
 					//cout << info[board[i][j].front()].m << ' ';
-					answer += board[i][j].front().m;
-					board[i][j].pop_front();
+					answer += info[board[i][j].front()].m;
+					board[i][j].pop();
 				}
 		}
 
 	cout << answer << '\n';
+
+
+	//func();
+
+	//int answer = 0;
+	//for (int i = 0; i < N; i++)
+	//	for (int j = 0; j < N; j++) {
+	//		if (vis[i][j] == 1)
+	//			while (!board[i][j].empty()) {
+	//				//cout << info[board[i][j].front()].m << ' ';
+	//				answer += info[board[i][j].front()].m;
+	//				board[i][j].pop();
+	//			}
+	//	}
+
+	//cout << answer;
+
 }

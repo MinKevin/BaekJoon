@@ -8,14 +8,15 @@ int N, C;
 vector<int> v;
 
 int func() {
-	int st = 0;
-	int end = v[N - 1] - 1;
-
+	//int min = 0;
+	//int max = v[N - 1] - 1;
+	int min = 0;
+	int max = v.back();
 	int result;
 
-	while (st <= end) {
+	while (min <= max) {
 		int cnt = 1;
-		int mid = (st + end) / 2;
+		int mid = (min + max) / 2;
 		int startLoc = v[0];
 
 		for (int i = 1; i < N; i++) {
@@ -28,10 +29,10 @@ int func() {
 		}
 		if (cnt >= C) {
 			result = mid;
-			st = mid + 1;
+			min = mid + 1;
 		}
 		else {
-			end = mid - 1;
+			max = mid - 1;
 		}
 	}
 

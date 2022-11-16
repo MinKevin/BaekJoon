@@ -7,9 +7,10 @@ using namespace std;
 int main()
 {
     string buf = "a" + 1;
-    cout << buf << '\n'; // ¾Æ¹«°Íµµ Ãâ·ÂµÇÁö ¾ÊÀ½
+    cout << buf << '\n';// ì•„ë¬´ê²ƒë„ ì¶œë ¥ë˜ì§€ ì•ŠìŒ
 
     /*
+    * 
     vector<int> v3 = {1,2,3};
     vector<int> v4;
     v4 = v3;
@@ -18,27 +19,21 @@ int main()
     */
 
     /*
-    int numArr[3][4] = {    // ¼¼·Î 3, °¡·Î 4 Å©±âÀÇ intÇü 2Â÷¿ø ¹è¿­ ¼±¾ð
+    int numArr[3][4] = {    // ì„¸ë¡œ 3, ê°€ë¡œ 4 í¬ê¸°ì˜ intí˜• 2ì°¨ì› ë°°ì—´ ì„ ì–¸
         { 11, 22, 33, 44 },
         { 55, 66, 77, 88 },
         { 99, 110, 121, 132 }
     };
-
     int(*numPtr)[4] = numArr;
-
-    printf("%p\n", *numPtr); // 002BFE5C: 2Â÷¿ø ¹è¿­ Æ÷ÀÎÅÍ¸¦ ¿ªÂüÁ¶ÇÏ¸é ¼¼·Î Ã¹ ¹øÂ°ÀÇ ÁÖ¼Ò°¡ ³ª¿È
-                             // ÄÄÇ»ÅÍ¸¶´Ù, ½ÇÇàÇÒ ¶§¸¶´Ù ´Þ¶óÁü
-
-    printf("%p\n", *numArr); // 002BFE5C: 2Â÷¿ø ¹è¿­À» ¿ªÂüÁ¶ÇÏ¸é ¼¼·Î Ã¹ ¹øÂ°ÀÇ ÁÖ¼Ò°¡ ³ª¿È
-                             // ÄÄÇ»ÅÍ¸¶´Ù, ½ÇÇàÇÒ ¶§¸¶´Ù ´Þ¶óÁü
-
-    printf("%d\n", numPtr[2][1]);    // 110: 2Â÷¿ø ¹è¿­ Æ÷ÀÎÅÍ´Â ÀÎµ¦½º·Î Á¢±ÙÇÒ ¼ö ÀÖÀ½
-
-    printf("%d\n", sizeof(numArr));  // 48: sizeof·Î 2Â÷¿ø ¹è¿­ÀÇ Å©±â¸¦ ±¸ÇÏ¸é ¹è¿­ÀÌ ¸Þ¸ð¸®¿¡ 
-                                     // Â÷ÁöÇÏ´Â °ø°£ÀÌ Ãâ·ÂµÊ
-
-    printf("%d\n", sizeof(numPtr));  // 4 : sizeof·Î 2Â÷¿ø ¹è¿­ Æ÷ÀÎÅÍÀÇ Å©±â¸¦ 
-                                     // ±¸ÇÏ¸é Æ÷ÀÎÅÍÀÇ Å©±â°¡ Ãâ·ÂµÊ(64ºñÆ®¶ó¸é 8)
+    printf("%p\n", *numPtr); // 002BFE5C: 2ì°¨ì› ë°°ì—´ í¬ì¸í„°ë¥¼ ì—­ì°¸ì¡°í•˜ë©´ ì„¸ë¡œ ì²« ë²ˆì§¸ì˜ ì£¼ì†Œê°€ ë‚˜ì˜´
+                             // ì»´í“¨í„°ë§ˆë‹¤, ì‹¤í–‰í•  ë•Œë§ˆë‹¤ ë‹¬ë¼ì§
+    printf("%p\n", *numArr); // 002BFE5C: 2ì°¨ì› ë°°ì—´ì„ ì—­ì°¸ì¡°í•˜ë©´ ì„¸ë¡œ ì²« ë²ˆì§¸ì˜ ì£¼ì†Œê°€ ë‚˜ì˜´
+                             // ì»´í“¨í„°ë§ˆë‹¤, ì‹¤í–‰í•  ë•Œë§ˆë‹¤ ë‹¬ë¼ì§
+    printf("%d\n", numPtr[2][1]);    // 110: 2ì°¨ì› ë°°ì—´ í¬ì¸í„°ëŠ” ì¸ë±ìŠ¤ë¡œ ì ‘ê·¼í•  ìˆ˜ ìžˆìŒ
+    printf("%d\n", sizeof(numArr));  // 48: sizeofë¡œ 2ì°¨ì› ë°°ì—´ì˜ í¬ê¸°ë¥¼ êµ¬í•˜ë©´ ë°°ì—´ì´ ë©”ëª¨ë¦¬ì—
+                                     // ì°¨ì§€í•˜ëŠ” ê³µê°„ì´ ì¶œë ¥ë¨
+    printf("%d\n", sizeof(numPtr));  // 4 : sizeofë¡œ 2ì°¨ì› ë°°ì—´ í¬ì¸í„°ì˜ í¬ê¸°ë¥¼
+                                     // êµ¬í•˜ë©´ í¬ì¸í„°ì˜ í¬ê¸°ê°€ ì¶œë ¥ë¨(64ë¹„íŠ¸ë¼ë©´ 8)
     */
     return 0;
 }

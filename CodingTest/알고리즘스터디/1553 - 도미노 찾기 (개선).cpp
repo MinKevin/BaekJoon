@@ -11,6 +11,16 @@ int dx[2] = { 0, 1 };
 int dy[2] = { 1, 0 };
 
 void func(int r, int c, int usedDomino) {
+	if (c >= 7) {
+		c = 0;
+		r++;
+	}
+
+	if (vis[r][c] == 1) {
+		func(r, c + 1, usedDomino);
+		return;
+	}
+
 	for (int dir = 0; dir < 2; dir++) {
 		int nx = r + dx[dir];
 		int ny = c + dy[dir];
@@ -29,21 +39,11 @@ void func(int r, int c, int usedDomino) {
 			vis[r][c] = 1;
 			vis[nx][ny] = 1;
 
-			for (int i = r * 7 + c + 1; i < r * 7 + c + 14; i++) {
-				if (i >= 56)
-					break;
+			if (usedDomino == 27) 
+				answer++;
+			else
+				func(r, c + 1, usedDomino + 1);
 
-				if (usedDomino == 27) {
-					answer++;
-					break;
-				}
-
-				if (vis[i / 7][i % 7] == 0) {
-					//cout << dominoNum.first << ' ' << dominoNum.second << ' ' << usedDomino + 1 << '\n';
-					func(i / 7, i % 7, usedDomino + 1);
-					break;
-				}
-			}
 			domino[dominoNum.first][dominoNum.second] = 1;
 			vis[r][c] = 0;
 			vis[nx][ny] = 0;
@@ -56,11 +56,11 @@ int main(void) {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 
-	for (int i = 0; i < 8; i++) 
+	for (int i = 0; i < 8; i++)
 		cin >> bufBoard[i];
 
-	for (int i = 0; i < 8; i++) 
-		for (int j = 0; j < 7; j++) 
+	for (int i = 0; i < 8; i++)
+		for (int j = 0; j < 7; j++)
 			board[i][j] = bufBoard[i][j] - '0';
 
 	for (int i = 0; i < 7; i++) {

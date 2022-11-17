@@ -8,25 +8,25 @@ struct NODE {
 
 void addFirst(struct NODE *target, int data) {
 	struct NODE* newNode = malloc(sizeof(struct NODE));
-	newNode->next = target->next;//»õ ³ëµåÀÇ ´ÙÀ½ ³ëµå¿¡ 
-								//±âÁ¸ ³ëµåÀÇ ´ÙÀ½ ³ëµå¸¦ ÁöÁ¤
-	newNode->data = data;		//µ¥ÀÌÅÍ ÀúÀå
+	newNode->next = target->next;//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¿¡ 
+								//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½
+	newNode->data = data;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	target->next = newNode;		//±âÁ¸ ³ëµåÀÇ ´ÙÀ½ ³ëµå¿¡ »õ ³ëµå¸¦ ÁöÁ¤
+	target->next = newNode;		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¿¡ ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½
 }
 
 int main() {
-	struct NODE* head = malloc(sizeof(struct NODE)); //¸Ó¸® ³ëµå »ý¼º
+	struct NODE* head = malloc(sizeof(struct NODE)); //ï¿½Ó¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	head->next = NULL;
 
 	addFirst(head, 10);
 	addFirst(head, 20);
 	addFirst(head, 30);
 
-	//¿¬°á¸®½ºÆ® ¼øÈ¸¿ë Æ÷ÀÎÅÍ¿¡ Ã¹ ¹øÂ° ³ëµåÀÇ ÁÖ¼Ò ÀúÀå
+	//ï¿½ï¿½ï¿½á¸®ï¿½ï¿½Æ® ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ Ã¹ ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 	struct NODE* curr = head->next; 
 
-	while (curr != NULL) {//Æ÷ÀÎÅÍ°¡ NULLÀÌ ¾Æ´Ò ¶§ °è¼Ó ¹Ýº¹
+	while (curr != NULL) {//ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ NULLï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ýºï¿½
 		printf("%d \n", curr->data);
 		curr = curr->next;
 	}

@@ -1,6 +1,6 @@
-//³Ê¹« ¾î·Æ°Ô »ı°¢Çß´Ù....
-//Á÷°üÀûÀ¸·Î º¸¸é ÁÁÀºµ¥....
-//´Ù½Ã»ı°¢ÇØº¸´Ï±î ¹«Á¶°Ç Æ²·È´Ù.
+ï»¿//ë„ˆë¬´ ì–´ë µê²Œ ìƒê°í–ˆë‹¤....
+//ì§ê´€ì ìœ¼ë¡œ ë³´ë©´ ì¢‹ì€ë°....
+//ë‹¤ì‹œìƒê°í•´ë³´ë‹ˆê¹Œ ë¬´ì¡°ê±´ í‹€ë ¸ë‹¤.
 
 #include <iostream>
 #include <vector>
@@ -20,7 +20,7 @@ pair<int, int> func(string T, int depth) {
 	int nxtLen = (lenT - 1) / 2;
 
 	int modLen = nxtLen % 2;
-	if (modLen == 1) {//X_i-1 ÀÌ È¦¼ö
+	if (modLen == 1) {//X_i-1 ì´ í™€ìˆ˜
 		cur = func(T.substr(0, nxtLen), depth + 1);
 		if (cur.first == T[nxtLen]) {
 			return { T[nxtLen], cur.second * 2 + 1 };
@@ -31,7 +31,7 @@ pair<int, int> func(string T, int depth) {
 			return { T[nxtLen], 1 };
 		}
 	}
-	else {//X_i-1ÀÌ Â¦¼ö
+	else {//X_i-1ì´ ì§ìˆ˜
 		int startIndex = nxtLen - 1;
 		int cnt = 0;
 		for (int i = 1; i < lenT / 2; i += 2) {

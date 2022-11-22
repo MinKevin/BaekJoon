@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <algorithm>
 
 using namespace std;
@@ -7,10 +7,10 @@ int main(void) {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 
-	//int board[7] == {1} <= Ã¹¹øÂ° ¿ø¼Ò¸¸ 1·Î ÃÊ±âÈ­, ³ª¸ÓÁö´Â 0À¸·Î ÃÊ±âÈ­µÊ
+	//int board[7] == {1} <= ì²«ë²ˆì§¸ ì›ì†Œë§Œ 1ë¡œ ì´ˆê¸°í™”, ë‚˜ë¨¸ì§€ëŠ” 0ìœ¼ë¡œ ì´ˆê¸°í™”ë¨
 	int board[7] = {0, };
 
-	//memsetÀº for¹®º¸´Ù ºü¸¥ ¼Óµµ·Î ½ÇÇà °¡´É
+	//memsetì€ forë¬¸ë³´ë‹¤ ë¹ ë¥¸ ì†ë„ë¡œ ì‹¤í–‰ ê°€ëŠ¥
 	//memset(board, 1, sizeof(board));
 
 	//fill_n(board, sizeof(board), 1);

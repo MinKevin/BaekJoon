@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <cstring>
 
@@ -23,9 +23,9 @@ char func(int N, int x, int y) {
 		for (int j = 0; j < 2; j++) {
 			buf = func(N >> 1, x + N / 2 * i, y + N / 2 * j);
 			if (buf != NULL) {
-				//ÀÌ ºÎºĞ debugging ÇÏ´Âµ¥ °ÅÀÇ 1½Ã°£À» ½è´Ù...
-				// ¾Æ·¡ ±¸¹®À» ¿©±â´Ù ³ÖÀ¸¸é ¾ÈµÇ°í 
-				// BaseCondition, Áï 13¹øÂ° ÁÙ¿¡ ³Ö¾î¾ßÇÑ´Ù...
+				//ì´ ë¶€ë¶„ debugging í•˜ëŠ”ë° ê±°ì˜ 1ì‹œê°„ì„ ì¼ë‹¤...
+				// ì•„ë˜ êµ¬ë¬¸ì„ ì—¬ê¸°ë‹¤ ë„£ìœ¼ë©´ ì•ˆë˜ê³  
+				// BaseCondition, ì¦‰ 13ë²ˆì§¸ ì¤„ì— ë„£ì–´ì•¼í•œë‹¤...
 				//answer.push_back(buf);
 				count[buf - '0']++;
 			}

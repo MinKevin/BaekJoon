@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <algorithm>
 
 using namespace std;
@@ -18,7 +18,7 @@ int binarysearch(int target) {
 		else
 			return 1;
 	}
-	return 0; // st > enÀÏ °æ¿ì while¹®À» Å»Ãâ
+	return 0; // st > enì¼ ê²½ìš° whileë¬¸ì„ íƒˆì¶œ
 }
 
 int main(void) {

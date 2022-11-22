@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <queue>
 
 using namespace std;
@@ -9,7 +9,7 @@ int vis[1000][1000][11];
 int dx[4] = { 1, -1, 0, 0 };
 int dy[4] = { 0, 0, 1, -1 };
 
-//{{i, j}, º® ºÎ¼ø È½¼ö}
+//{{i, j}, ë²½ ë¶€ìˆœ íšŸìˆ˜}
 queue<pair<pair<int, int>, int>> q;
 
 int N, M, K;

@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <algorithm>
 
@@ -20,7 +20,7 @@ int main(void) {
 		v.push_back(buf);
 	}
 
-	//³»¸²Â÷¼ø
+	//ë‚´ë¦¼ì°¨ìˆœ
 	sort(v.begin(), v.end(), greater<>());
 
 	for (int i = 0; i < N; i++) {

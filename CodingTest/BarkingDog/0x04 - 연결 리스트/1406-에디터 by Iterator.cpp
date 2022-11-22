@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <list>
 
 using namespace std;
@@ -38,13 +38,13 @@ int main(void) {
 
 		case 'B':
 			if (cur != L.begin())
-				//erase´Â ÇØ´ç °ªÀ» Áö¿ì°í ´ÙÀ½ °ªÀÇ À§Ä¡¸¦ ¹İÈ¯
+				//eraseëŠ” í•´ë‹¹ ê°’ì„ ì§€ìš°ê³  ë‹¤ìŒ ê°’ì˜ ìœ„ì¹˜ë¥¼ ë°˜í™˜
 				cur = L.erase(--cur);
 			break;
 		case 'P':
 			char s;
 			cin >> s;
-			//insertÇÑ °ªÀÇ À§Ä¡¸¦ ¹İÈ¯
+			//insertí•œ ê°’ì˜ ìœ„ì¹˜ë¥¼ ë°˜í™˜
 			L.insert(cur, s);
 			break;
 		}

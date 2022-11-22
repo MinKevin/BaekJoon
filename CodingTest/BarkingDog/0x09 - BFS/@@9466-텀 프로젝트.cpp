@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <queue>
 #include <vector>
 #include <cstring>
@@ -13,7 +13,7 @@ pair<int, int> vis[100001];
 int T, n, cnt;
 vector<int> answer;
 
-//ÆÀÀ» ÀÌ·é »ç¶÷À» count
+//íŒ€ì„ ì´ë£¬ ì‚¬ëŒì„ count
 int DFS(int odr, int count, int startNum) {
 	if (vis[odr] != make_pair(0, 0)) {
 		if (vis[odr].second == startNum)

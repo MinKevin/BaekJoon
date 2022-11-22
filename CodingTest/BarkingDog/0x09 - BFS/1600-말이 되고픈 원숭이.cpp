@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <queue>
 
 using namespace std;
@@ -11,7 +11,7 @@ int dy[12] = { 2, -2, 1, -1, 2, -2, 1, -1, 0, 0, 1, -1 };
 
 int H, W, K;
 
-//{{i, j}, ¸»Ã³·³ ÀÌµ¿ÇÑ È½¼ö}
+//{{i, j}, ë§ì²˜ëŸ¼ ì´ë™í•œ íšŸìˆ˜}
 queue<pair<pair<int, int>, int>> q;
 
 int BFS() {

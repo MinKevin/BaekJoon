@@ -1,4 +1,4 @@
-//�켱���� ť�� �ð����⵵ : O(log2N)
+﻿//우선순위 큐의 시간복잡도 : O(log2N)
 #include <iostream>
 #include <queue>
 #include <vector>

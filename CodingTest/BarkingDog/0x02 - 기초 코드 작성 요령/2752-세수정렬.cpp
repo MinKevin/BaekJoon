@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <algorithm>
 
 using namespace std;
@@ -12,13 +12,13 @@ int main(void) {
 	for (int i = 0; i < 3; i++) {
 		cin >> arr[i];
 	}
-	//¿À¸§Â÷¼ø Á¤·Ä 1
+	//ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬ 1
 	//sort(arr, arr + 3);
 	
-	//¿À¸§Â÷¼ø Á¤·Ä 2
+	//ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬ 2
 	for (int i = 0; i < 3; i++) {
 		for (int j = i + 1; j < 3; j++) {
-			//³»¸²Â÷¼øÀÇ °æ¿ì arr[i] < arr[j];
+			//ë‚´ë¦¼ì°¨ìˆœì˜ ê²½ìš° arr[i] < arr[j];
 			if (arr[i] > arr[j]) {
 				int tmp = arr[i];
 				arr[i] = arr[j];
@@ -32,7 +32,7 @@ int main(void) {
 	}
 
 	
-	//¼ø¼­´ë·Î ¿À¸§Â÷¼ø, ³»¸²Â÷¼ø
+	//ìˆœì„œëŒ€ë¡œ ì˜¤ë¦„ì°¨ìˆœ, ë‚´ë¦¼ì°¨ìˆœ
 	sort(begin(arr), end(arr), less<>());
 	sort(begin(arr), end(arr), greater<>());
 }

@@ -1,4 +1,4 @@
-//221111
+ï»¿//221111
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -43,8 +43,8 @@ void func() {
 
 						int cur = board[i][j].front();
 						board[i][j].pop();
-						//¿ä ¾Æ·¡ ºÎºĞ ¼ö½Ä r°ú c´Â 0 ~ N - 1ÀÎµ¥ ¼º¸³ÇÏ´Â ÀÌÀ¯ Àß »ı°¢ÇØº¸ÀÚ
-						//x % NÀÏ °æ¿ì ³ª¿Ã ¼ö ÀÖ´Â °ªÀº 0 ~ N - 1ÀÌ±â ¶§¹®¿¡ ¼º¸³ÇÏ´Â °Íµµ ÇÏ³ªÀÇ ÀÌÀ¯
+						//ìš” ì•„ë˜ ë¶€ë¶„ ìˆ˜ì‹ rê³¼ cëŠ” 0 ~ N - 1ì¸ë° ì„±ë¦½í•˜ëŠ” ì´ìœ  ì˜ ìƒê°í•´ë³´ì
+						//x % Nì¼ ê²½ìš° ë‚˜ì˜¬ ìˆ˜ ìˆëŠ” ê°’ì€ 0 ~ N - 1ì´ê¸° ë•Œë¬¸ì— ì„±ë¦½í•˜ëŠ” ê²ƒë„ í•˜ë‚˜ì˜ ì´ìœ 
 						int nx = (info[cur].r + (info[cur].s % N) * dx[info[cur].d] + N * 2) % N;
 						int ny = (info[cur].c + (info[cur].s % N) * dy[info[cur].d] + N * 2) % N;
 
@@ -83,7 +83,7 @@ void func() {
 
 					bool once = false;
 					while (!board[i][j].empty()) {
-						//cout << "ÀÖÀ½\n";
+						//cout << "ìˆìŒ\n";
 						if (cnt != info[board[i][j].front()].trial)
 							break;
 						once = true;

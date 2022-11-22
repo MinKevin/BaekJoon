@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 using namespace std;
 
@@ -15,9 +15,9 @@ ll Recur(ll A, ll B, ll C) {
 	else {
 
 		//return remainder * remainder * A % C;
-		//À§¿Í °°ÀÌ ÀÛ¼ºÇÏ¸é ¿¡·¯°¡ ¹ß»ı
-		//ÀÌÀ¯´Â raminderÀÇ ÃÖ´ë°ªÀº int ¾çÀÇ ÃÖ´ë°ª -1, ´ë·«ÀûÀ¸·Î 10^9ÀÌ°í ÀÌ µÎ ¼ö¸¦ °öÇÏ¸é ÃÖ¼Ò 10^18
-		//long longÀÇ ¹üÀ§´Â 10^18ÀÌ¹Ç·Î, reaminderÀÇ Á¦°ö¿¡ A¸¦ °öÇÒ °æ¿ì ³ôÀº È®·ü·Î ¿À¹öÇÃ·Î¿ì°¡ ¹ß»ı
+		//ìœ„ì™€ ê°™ì´ ì‘ì„±í•˜ë©´ ì—ëŸ¬ê°€ ë°œìƒ
+		//ì´ìœ ëŠ” raminderì˜ ìµœëŒ€ê°’ì€ int ì–‘ì˜ ìµœëŒ€ê°’ -1, ëŒ€ëµì ìœ¼ë¡œ 10^9ì´ê³  ì´ ë‘ ìˆ˜ë¥¼ ê³±í•˜ë©´ ìµœì†Œ 10^18
+		//long longì˜ ë²”ìœ„ëŠ” 10^18ì´ë¯€ë¡œ, reaminderì˜ ì œê³±ì— Aë¥¼ ê³±í•  ê²½ìš° ë†’ì€ í™•ë¥ ë¡œ ì˜¤ë²„í”Œë¡œìš°ê°€ ë°œìƒ
 		remainder = remainder * remainder % C;
 		return remainder * A % C;
 	}

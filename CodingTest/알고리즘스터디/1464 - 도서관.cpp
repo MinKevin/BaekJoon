@@ -1,4 +1,4 @@
-//221108
+﻿//221108
 #include <iostream>
 #include <vector>
 #include <algorithm>

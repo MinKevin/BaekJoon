@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <queue>
 #include <vector>
 #include <cstring>
@@ -69,8 +69,8 @@ int main(void) {
 					}
 				}
 			}
-			// cin Àº '\n' ÀÌ ¸î°³µç ¹«½Ã
-			// µû¶ó¼­ °ø¹éÀº µû·Î Ã³¸®ÇØÁÙ ÇÊ¿ä°¡ ¾ø´Ù.
+			// cin ì€ '\n' ì´ ëª‡ê°œë“  ë¬´ì‹œ
+			// ë”°ë¼ì„œ ê³µë°±ì€ ë”°ë¡œ ì²˜ë¦¬í•´ì¤„ í•„ìš”ê°€ ì—†ë‹¤.
 		}
 
 		answer.push_back(BFS());

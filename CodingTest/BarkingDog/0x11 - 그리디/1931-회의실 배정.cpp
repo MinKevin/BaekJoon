@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <algorithm>
 
@@ -46,7 +46,7 @@ int main(void) {
 	//sort(inp.begin(), inp.end(), Cmp);
 	sort(inp.begin(), inp.end(), Cmp2);
 
-	/*cout << "°á°ú \n";
+	/*cout << "ê²°ê³¼ \n";
 	for (auto a : inp)
 		cout << a.first << ' ' << a.second << '\n';*/
 

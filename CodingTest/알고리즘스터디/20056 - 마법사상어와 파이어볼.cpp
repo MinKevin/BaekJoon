@@ -1,5 +1,5 @@
-//221111
-//7½Ã°£°É¸² ¤Ğ...
+ï»¿//221111
+//7ì‹œê°„ê±¸ë¦¼ ã… ...
 #include <iostream>
 #include <vector>
 #include <deque>
@@ -31,8 +31,8 @@ void func() {
 					while (!board[i][j].empty() && board[i][j].front().trial == cnt) {
 						Data cur = board[i][j].front();
 						board[i][j].pop_front();
-						//¿ä ¾Æ·¡ ºÎºĞ ¼ö½Ä r°ú c´Â 0 ~ N - 1ÀÎµ¥ ¼º¸³ÇÏ´Â ÀÌÀ¯ Àß »ı°¢ÇØº¸ÀÚ
-						//x % NÀÏ °æ¿ì ³ª¿Ã ¼ö ÀÖ´Â °ªÀº 0 ~ N - 1ÀÌ±â ¶§¹®¿¡ ¼º¸³ÇÏ´Â °Íµµ ÇÏ³ªÀÇ ÀÌÀ¯
+						//ìš” ì•„ë˜ ë¶€ë¶„ ìˆ˜ì‹ rê³¼ cëŠ” 0 ~ N - 1ì¸ë° ì„±ë¦½í•˜ëŠ” ì´ìœ  ì˜ ìƒê°í•´ë³´ì
+						//x % Nì¼ ê²½ìš° ë‚˜ì˜¬ ìˆ˜ ìˆëŠ” ê°’ì€ 0 ~ N - 1ì´ê¸° ë•Œë¬¸ì— ì„±ë¦½í•˜ëŠ” ê²ƒë„ í•˜ë‚˜ì˜ ì´ìœ 
 						int nx = (i + (cur.s % N) * dx[cur.d] + N * 2) % N;
 						int ny = (j + (cur.s % N) * dy[cur.d] + N * 2) % N;
 						vis[nx][ny] = 1;
@@ -70,7 +70,7 @@ void func() {
 					board[i][j].pop_front();
 
 					Data dat;
-					if (cur.isEven == 0 || cur.isOdd == 0) { //¸ğµÎ È¦, Â¦
+					if (cur.isEven == 0 || cur.isOdd == 0) { //ëª¨ë‘ í™€, ì§
 						for (int k = 0; k < 4; k++) {
 							dat.m = cur.m / 5; dat.s = cur.s / cur.cntBall; dat.d = 2 * k; dat.trial = cnt;
 							if (dat.m == 0)

@@ -1,4 +1,4 @@
-// ( => result + 1, cnt++,  () ==> result += cnt, ) => cnt--;
+﻿// ( => result + 1, cnt++,  () ==> result += cnt, ) => cnt--;
 
 #include <iostream>
 

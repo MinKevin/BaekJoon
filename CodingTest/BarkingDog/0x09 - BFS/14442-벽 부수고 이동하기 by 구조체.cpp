@@ -1,12 +1,12 @@
-# include <iostream>
+ï»¿# include <iostream>
 #include <queue>
 
 using namespace std;
 
 struct P {
-    int r, c;       // ÇöÀç À§Ä¡
-    int cnt = 1;    // Áö±Ý±îÁö Áö³ª¿Â Ä­ ¼ö
-    int wall = 0;   // Áö±Ý±îÁö ºÎ¼ø º®ÀÇ ¼ö 
+    int r, c;       // í˜„ìž¬ ìœ„ì¹˜
+    int cnt = 1;    // ì§€ê¸ˆê¹Œì§€ ì§€ë‚˜ì˜¨ ì¹¸ ìˆ˜
+    int wall = 0;   // ì§€ê¸ˆê¹Œì§€ ë¶€ìˆœ ë²½ì˜ ìˆ˜ 
 };
 
 int N, M, K;
@@ -38,24 +38,24 @@ int BFS() {
         P now = que.front();
         que.pop();
 
-        // BFS ÀÌ¹Ç·Î °¡Àå ¸ÕÀú µµÂøÇÑ °æ¿ìÀÓ
+        // BFS ì´ë¯€ë¡œ ê°€ìž¥ ë¨¼ì € ë„ì°©í•œ ê²½ìš°ìž„
         if (now.r == N - 1 && now.c == M - 1) return now.cnt;
 
         for (int i = 0; i < 4; i++) {
             int nr = now.r + dr[i];
             int nc = now.c + dc[i];
 
-            // ÁÂÇ¥¸¦ ³Ñ¾î°¡´Â °æ¿ì
+            // ì¢Œí‘œë¥¼ ë„˜ì–´ê°€ëŠ” ê²½ìš°
             if (nr < 0 || nr >= N || nc < 0 || nc >= M) continue;
-            // ÀÌ¹Ì ¹æ¹®ÇÑ °æ¿ì
+            // ì´ë¯¸ ë°©ë¬¸í•œ ê²½ìš°
             if (visited[nr][nc][now.wall]) continue;
 
-            // ´ÙÀ½ÀÌ º®ÀÌ ¾Æ´Ï°í, ¹æ¹®ÇÏÁö ¾Ê¾Ò´Ù¸é
+            // ë‹¤ìŒì´ ë²½ì´ ì•„ë‹ˆê³ , ë°©ë¬¸í•˜ì§€ ì•Šì•˜ë‹¤ë©´
             if (!Map[nr][nc] && !visited[nr][nc][now.wall]) {
                 visited[nr][nc][now.wall] = 1;
                 que.push({ nr, nc, now.cnt + 1, now.wall });
             }
-            // ´ÙÀ½ÀÌ º®ÀÌ°í, º®À» ÃÖ¼Ò ÇÏ³ª ´õ ºÎ¼ú ¼ö ÀÖ°í, ÇÏ³ª ´õ ºÎ¼ø °æ¿ì¿¡ ¹æ¹®ÇÏÁö ¾Ê¾Ò´Ù¸é
+            // ë‹¤ìŒì´ ë²½ì´ê³ , ë²½ì„ ìµœì†Œ í•˜ë‚˜ ë” ë¶€ìˆ  ìˆ˜ ìžˆê³ , í•˜ë‚˜ ë” ë¶€ìˆœ ê²½ìš°ì— ë°©ë¬¸í•˜ì§€ ì•Šì•˜ë‹¤ë©´
             if (Map[nr][nc] && now.wall < K && !visited[nr][nc][now.wall + 1]) {
                 visited[nr][nc][now.wall + 1] = 1;
                 que.push({ nr, nc, now.cnt + 1, now.wall + 1 });

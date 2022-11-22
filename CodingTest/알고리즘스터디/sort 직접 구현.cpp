@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 using namespace std;
 
@@ -25,7 +25,7 @@ int main(void) {
 	sort(&arr[1], &arr[5]);
 
 	//cout << *&arr[0] << '\n';
-	// arr°ú arr[0]ÀÇ ÁÖ¼Ò°ªÀº °°´Ù!
+	// arrê³¼ arr[0]ì˜ ì£¼ì†Œê°’ì€ ê°™ë‹¤!
 	//cout << *arr << '\n' << & arr[0] << '\n'; 
 
 	for (auto a : arr) {

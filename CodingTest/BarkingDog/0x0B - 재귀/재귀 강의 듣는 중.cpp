@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 using namespace std;
 
@@ -25,9 +25,9 @@ int main(void) {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 
-	//10 ºÎÅÍ 1±îÁö Ãâ·Â
+	//10 ë¶€í„° 1ê¹Œì§€ ì¶œë ¥
 	Recur(1);
 
-	//1ºÎÅÍ 10±îÁö ´õÇÏ±â
+	//1ë¶€í„° 10ê¹Œì§€ ë”í•˜ê¸°
 	cout << '\n' << Sum(1);
 }

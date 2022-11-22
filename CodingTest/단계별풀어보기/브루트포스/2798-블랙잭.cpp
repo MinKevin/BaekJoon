@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #define minDiscriminant a < b ? a : b
 
 using namespace std;

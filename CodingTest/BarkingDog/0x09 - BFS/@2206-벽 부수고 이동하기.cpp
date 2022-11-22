@@ -1,11 +1,11 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <queue>
 
 using namespace std;
 
 int board[1000][1000];
-//vis.first = º®À» ºÎ¼öÁö ¾Ê°í ¿Â ÃÖ´Ü °æ·Î
-//vis.second = º®À» ºÎ¼ö°í ¿Â ÃÖ´Ü °æ·Î
+//vis.first = ë²½ì„ ë¶€ìˆ˜ì§€ ì•Šê³  ì˜¨ ìµœë‹¨ ê²½ë¡œ
+//vis.second = ë²½ì„ ë¶€ìˆ˜ê³  ì˜¨ ìµœë‹¨ ê²½ë¡œ
 int vis[1000][1000][2];
 
 int dx[4] = { 1, -1, 0, };

@@ -1,5 +1,5 @@
-//221101
-//¹éÆ®·¡Å·
+ï»¿//221101
+//ë°±íŠ¸ë˜í‚¹
 #include <iostream>
 #include <string>
 using namespace std;
@@ -10,42 +10,42 @@ bool findOLine = false;
 bool findXLine = false;
 
 void Check() {
-	//´ë°¢¼±1
+	//ëŒ€ê°ì„ 1
 	char ansChar;
 
 	ansChar = inp[0];
 	if (ansChar != '.' && ansChar == inp[4] && ansChar == inp[8]) {
-		//cout << "´ë°¢¼±1";
+		//cout << "ëŒ€ê°ì„ 1";
 		if (ansChar == 'X')
 			findXLine = true;
 		else
 			findOLine = true;
 	}
-	//´ë°¢¼±2
+	//ëŒ€ê°ì„ 2
 	ansChar = inp[2];
 	if (ansChar != '.' && ansChar == inp[4] && ansChar == inp[6]) {
-		//cout << "´ë°¢¼±2";
+		//cout << "ëŒ€ê°ì„ 2";
 		if (ansChar == 'X')
 			findXLine = true;
 		else
 			findOLine = true;
 	}
-	//Çà
+	//í–‰
 	for (int i = 0; i < 9; i += 3) {
 		ansChar = inp[i];
 		if (ansChar != '.' && ansChar == inp[i + 1] && ansChar == inp[i + 2]) {
-			//cout << "Çà";
+			//cout << "í–‰";
 			if (ansChar == 'X')
 				findXLine = true;
 			else
 				findOLine = true;
 		}
 	} 
-	//¿­
+	//ì—´
 	for (int i = 0; i < 3; i++) {
 		ansChar = inp[i];
 		if (ansChar != '.' && ansChar == inp[i + 3] && ansChar == inp[i + 6]) {
-			//cout << "¿­";
+			//cout << "ì—´";
 			if (ansChar == 'X')
 				findXLine = true;
 			else
@@ -76,7 +76,7 @@ int main(void) {
 		  
 		//https://lollolzkk.tistory.com/12
 		int locDot = inp.find('.');
-		if (locDot != string::npos) {//find ÇÔ¼ö´Â targetCharÀÌ Á¸Àç ÇÏÁö ¾ÊÀ¸¸é ¾²·¹±â °ª(string::npos)¸¦ return (NULLÀÌ ¾Æ´Ô)
+		if (locDot != string::npos) {//find í•¨ìˆ˜ëŠ” targetCharì´ ì¡´ì¬ í•˜ì§€ ì•Šìœ¼ë©´ ì“°ë ˆê¸° ê°’(string::npos)ë¥¼ return (NULLì´ ì•„ë‹˜)
 			Check();
 			if (cntX == cntO && findXLine == false && findOLine == true)
 				answer = true;

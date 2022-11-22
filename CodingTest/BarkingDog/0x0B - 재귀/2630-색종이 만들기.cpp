@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <cstring>
 #include <vector>
 
@@ -20,7 +20,7 @@ int func(int N, int x, int y) {
 	bool cantOne = false;
 	for (int i = 0; i < 2; i++) {
 		for (int j = 0; j < 2; j++) {
-			//ºñÆ® ½ÃÇÁÆ® ¿¬»êÀÚÀÇ ¿ì¼±¼øÀ§´Â µ¡¼À, »¬¼À ¿¬»êÀÚ ´ÙÀ½ÀÌ¹Ç·Î
+			//ë¹„íŠ¸ ì‹œí”„íŠ¸ ì—°ì‚°ìžì˜ ìš°ì„ ìˆœìœ„ëŠ” ë§ì…ˆ, ëº„ì…ˆ ì—°ì‚°ìž ë‹¤ìŒì´ë¯€ë¡œ
 			int buf = func(N >> 1, x + (N >> 1) * i, y + (N >> 1) * j);
 			if (buf != -1)
 				cnt[buf]++;

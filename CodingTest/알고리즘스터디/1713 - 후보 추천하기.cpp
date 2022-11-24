@@ -14,6 +14,8 @@ Comment :
 #include <vector>
 #include <algorithm>
 #include <tuple>
+#include <queue>
+
 using namespace std;
 
 int N, T;
@@ -69,7 +71,7 @@ int main(void) {
 	cin.tie(NULL);
 
 	cin >> N >> T;
-
+	
 	int inp;
 	for (int i = 0; i < T; i++) {
 		cin >> inp;
@@ -78,7 +80,7 @@ int main(void) {
 			if (frame.size() == N) {
 				//cout << get<0>(*frame.begin()) << '\n';
 				frame.erase(frame.begin());
-				frame.push_back({ inp, 1, i });
+				frame.push_back({ inp, 1, i });// 
 			}
 			else {
 				frame.push_back({ inp, 1, i });
@@ -87,9 +89,9 @@ int main(void) {
 		else {
 			tuple<int, int, int> buf = *idx;
 			get<1>(buf)++;
-
+			//get<index>(tuple이름) = tuple이름[index]
 			frame.erase(idx);
-			frame.push_back(buf);
+			frame.push_back(buf);// 1 1 2 3 2(늦게) => 1 1 2 2(늦게) 3
 		}
 		sort(frame.begin(), frame.end(), cmpBySecond);
 	}

@@ -1,39 +1,212 @@
-﻿#include <stdio.h>
-#include <iostream>
-#include <vector>
+﻿#include <iostream>
+#include <cstdio>
+#include <queue>
+#include <cstring>
 
 using namespace std;
 
+int n, m;
+
+int map[102][102];
+int isVisited[102][102];
+
+pair<int, int> evenNear[6] = { {0,-1},{0,1},{1,-1},{1,0},{-1,-1},{-1,0} };
+pair<int, int> oddNear[6] = { {0,-1},{0,1},{1,1},{1,0},{-1,1},{-1,0} };
+
+int isInScope(int i, int j) {
+    return (i >= 1 && i <= n && j >= 1 && j <= m);
+}
+int isOnBorder(int i, int j) {
+    return (i == 1 || i == n || j == 1 || j == m);
+}
+
+int isSurrounded(int x, int y) {
+    queue<pair<int, int>> q;
+    q.push({ x,y });
+    isVisited[x][y] = 1;
+
+    while (!q.empty()) {
+        int frontX = q.front().first, frontY = q.front().second;
+        q.pop();
+
+
+        for (int i = 0; i < 6; i++) {
+            int newX = (frontX + ((frontX % 2 == 0) ? evenNear[i].first : oddNear[i].first));
+            int newY = (frontY + ((frontX % 2 == 0) ? evenNear[i].second : oddNear[i].second));
+
+            if (!isVisited[newX][newY] && map[newX][newY] == 0) {
+                if (isOnBorder(newX, newY)) {
+                    memset(isVisited, 0, sizeof(isVisited));
+                    return 0;
+                };
+                q.push({ newX,newY });
+                isVisited[newX][newY] = 1;
+            }
+        }
+    }
+
+    memset(isVisited, 0, sizeof(isVisited));
+    return 1;
+
+}
+
+int bfs(int x, int y) {
+    int perimeter = 0;
+    queue<pair<int, int>> q;
+
+    q.push({ x,y });
+    isVisited[x][y] = 1;
+
+
+    while (!q.empty()) {
+        pair<int, int> front = q.front();
+        q.pop();
+        int i = front.first, j = front.second;
+        // printf("%d %d\n",i,j);
+        perimeter += 6;
+
+
+        if (map[i][j - 1]) {
+            perimeter--;
+            if (!isVisited[i][j - 1]) {
+                isVisited[i][j - 1] = 1;
+                q.push({ i,j - 1 });
+            }
+        }
+        if (map[i][j + 1]) {
+            perimeter--;
+            if (!isVisited[i][j + 1]) {
+                isVisited[i][j + 1] = 1;
+                q.push({ i,j + 1 });
+            }
+        }
+        if (map[i - 1][j]) {
+            perimeter--;
+            if (!isVisited[i - 1][j]) {
+                isVisited[i - 1][j] = 1;
+                q.push({ i - 1,j });
+            }
+        }
+        if (map[i + 1][j]) {
+            perimeter--;
+            if (!isVisited[i + 1][j]) {
+                isVisited[i + 1][j] = 1;
+                q.push({ i + 1,j });
+            }
+        }
+        if (i % 2 == 0) {
+            if (map[i - 1][j - 1]) {
+                perimeter--;
+                if (!isVisited[i - 1][j - 1]) {
+                    isVisited[i - 1][j - 1] = 1;
+                    q.push({ i - 1,j - 1 });
+                }
+            }
+            if (map[i + 1][j - 1]) {
+                perimeter--;
+                if (!isVisited[i + 1][j - 1]) {
+                    isVisited[i + 1][j - 1] = 1;
+                    q.push({ i + 1,j - 1 });
+                }
+            }
+
+        }
+        else {
+            if (map[i - 1][j + 1]) {
+                perimeter--;
+                if (!isVisited[i - 1][j + 1]) {
+                    isVisited[i - 1][j + 1] = 1;
+                    q.push({ i - 1,j + 1 });
+                }
+            }
+            if (map[i + 1][j + 1]) {
+                perimeter--;
+                if (!isVisited[i + 1][j + 1]) {
+                    isVisited[i + 1][j + 1] = 1;
+                    q.push({ i + 1,j + 1 });
+                }
+            }
+        }
+
+
+
+    }
+    return perimeter;
+}
+
+int checkSurrounded(int x, int y) {
+    queue<pair<int, int>> q;
+    q.push({ x,y });
+    isVisited[x][y] = 1;
+
+    while (!q.empty()) {
+        int frontX = q.front().first, frontY = q.front().second;
+        q.pop();
+        map[frontX][frontY] = 1;
+
+
+        for (int i = 0; i < 6; i++) {
+            int newX = frontX + ((frontX % 2 == 0) ? evenNear[i].first : oddNear[i].first);
+            int newY = frontY + ((frontX % 2 == 0) ? evenNear[i].second : oddNear[i].second);
+
+            if (!isVisited[newX][newY] && map[newX][newY] == 0) {
+                q.push({ newX,newY });
+                isVisited[newX][newY] = 1;
+            }
+        }
+    }
+    memset(isVisited, 0, sizeof(isVisited));
+
+    return 0;
+}
+
 int main()
 {
-    string buf = "a" + 1;
-    cout << buf << '\n';// ?臾닿?? 異?λ吏 ??
+    int totalPerimeter = 0;
+    scanf_s("%d %d", &m, &n);
 
-    /*
-    * 
-    vector<int> v3 = {1,2,3};
-    vector<int> v4;
-    v4 = v3;
-    v4[2] = 10;
-    cout << v3[2];
-    */
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            scanf_s("%d", &map[i][j]);
+        }
+    }
 
-    /*
-    int numArr[3][4] = {    // ?몃? 3, 媛濡 4 ?ш린? int? 2李⑥ 諛곗????
-        { 11, 22, 33, 44 },
-        { 55, 66, 77, 88 },
-        { 99, 110, 121, 132 }
-    };
-    int(*numPtr)[4] = numArr;
-    printf("%p\n", *numPtr); // 002BFE5C: 2李⑥ 諛곗??ъ명곕? ?李몄“?硫??몃? 泥?踰吏몄 二쇱媛 ???
-                             // 而댄⑦곕??? ?ㅽ? ?留???щ쇱?
-    printf("%p\n", *numArr); // 002BFE5C: 2李⑥ 諛곗댁 ?李몄“?硫??몃? 泥?踰吏몄 二쇱媛 ???
-                             // 而댄⑦곕??? ?ㅽ? ?留???щ쇱?
-    printf("%d\n", numPtr[2][1]);    // 110: 2李⑥ 諛곗??ъ명곕 ?몃깆ㅻ? ?洹쇳 ? ??
-    printf("%d\n", sizeof(numArr));  // 48: sizeof濡 2李⑥ 諛곗댁 ?ш린瑜?援ы硫?諛곗댁?硫紐⑤━?
-                                     // 李⑥??? 怨듦???異?λ?
-    printf("%d\n", sizeof(numPtr));  // 4 : sizeof濡 2李⑥ 諛곗??ъ명곗 ?ш린瑜?
-                                     // 援ы硫??ъ명곗 ?ш린媛 異?λ?64鍮?몃쇰㈃ 8)
-    */
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            if (map[i][j] == 0 && isSurrounded(i, j)) {
+                checkSurrounded(i, j);
+            }
+        }
+    }
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            if (!isVisited[i][j] && map[i][j]) {
+                int buf = bfs(i, j);
+                //cout << buf << '\n';
+                totalPerimeter += buf;
+            }
+
+        }
+    }
+
+    // for(int i=1;i<=n;i++){
+    //     for(int j=1;j<=m;j++){
+    //         printf("%d ",map[i][j]);
+    //     }
+    //     printf("\n");
+    // }
+    printf("\n\n");
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            printf("%d ", map[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("%d\n", totalPerimeter);
+
+
     return 0;
 }

@@ -1,3 +1,12 @@
+/*
+Date : 22.12.06
+Time : 1:00
+Memo :
+	//buf[buf.size() - 1] = '\0';
+	buf.erase(buf.size() - 1);
+	위와 같이 string 문자열에 '\0'를 삽입 시, 백준에서는 오류 (Visual Studio에서는 잘되긴함)
+*/
+
 #include <iostream>
 #include <cstring>
 #include <algorithm>

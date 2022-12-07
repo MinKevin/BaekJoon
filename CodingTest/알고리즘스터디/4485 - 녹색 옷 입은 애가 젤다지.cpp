@@ -6,7 +6,7 @@
 
 using namespace std;
 
-#define INF 0xFFFF
+#define INF 0x7FFFFFFF
 
 
 int N;
@@ -57,7 +57,6 @@ int main(void){
 		cin >> N;
 		
         if (N == 0) {
-            cout << answer.size();
             for (int i = 0; i < answer.size(); i++) {
                 cout << "Problem " << (i + 1) << ": " << answer[i] << '\n';;
             }

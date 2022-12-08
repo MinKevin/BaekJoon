@@ -2,41 +2,36 @@
 #include <cmath>
 #include <vector>
 
+//23 2 1 0 22 0 1 21 2 20
+
 using namespace std;
 
 int N;
 int board[20][20];
-bool vis[20];
+int vis;
 int answer = 0x7FFFFFFF;
 
-int calculateStats() {
+int calculateStats(int vis) {
 	int homeStats = 0;
 	int awayStats = 0;
 	for (int i = 0; i < N - 1; i++) {
+		bool firstHomeTeam = (1 << i & vis) == 0 ? false : true;
 		for (int j = i + 1; j < N; j++) {
-			if (!vis[i] && !vis[j]) {
+			bool secondHomeTeam = (1 << j & vis) == 0 ? false : true;
+			if (firstHomeTeam && secondHomeTeam) {
 				awayStats += board[i][j] + board[j][i];
 			}
-			else if (vis[i] && vis[j]) {
+			else if (!firstHomeTeam && !secondHomeTeam) {
 				homeStats += board[i][j] + board[j][i];
 			}
 		}
 	}
-	cout << abs(homeStats - awayStats) << ' ';
 	return abs(homeStats - awayStats);
 }
 
-void dfs(int idx, int cnt) {
-	if (cnt > N / 2)
-		return;
-
-	if (idx != 0)
-		answer = min(calculateStats(), answer);
-
-	for (int i = idx; i < N; i++) {
-		vis[i] = true;
-		dfs(i + 1, cnt + 1);
-		vis[i] = false;
+void bitMasking() {
+	for (int i = 1; i < (1 << N); i++) {
+		answer = min(answer, calculateStats(i));
 	}
 }
 
@@ -53,7 +48,7 @@ int main(void) {
 		}
 	}
 
-	dfs(0, 0);
+	bitMasking();
 
 	cout << answer;
 }

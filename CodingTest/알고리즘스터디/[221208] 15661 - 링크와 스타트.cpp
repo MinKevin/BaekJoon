@@ -22,7 +22,6 @@ int calculateStats() {
 			}
 		}
 	}
-	cout << abs(homeStats - awayStats) << ' ';
 	return abs(homeStats - awayStats);
 }
 

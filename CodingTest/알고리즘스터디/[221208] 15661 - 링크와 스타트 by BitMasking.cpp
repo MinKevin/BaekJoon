@@ -30,7 +30,7 @@ int calculateStats(int vis) {
 }
 
 void bitMasking() {
-	for (int i = 1; i < (1 << N); i++) {
+	for (int i = 1; i < (1 << (N - 1)) - 1; i++) {
 		answer = min(answer, calculateStats(i));
 	}
 }

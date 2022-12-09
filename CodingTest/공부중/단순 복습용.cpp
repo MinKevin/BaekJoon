@@ -1,11 +1,12 @@
-﻿#include <iostream>
+#include <iostream>
 #include <queue>
 #include <vector>
 #include <tuple>
 
 using namespace std;
-
+  
 #define INF 0x7FFFFFFF;
+
 
 int N;
 int board[125][125];

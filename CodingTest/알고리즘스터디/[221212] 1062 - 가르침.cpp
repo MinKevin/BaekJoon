@@ -67,7 +67,7 @@ int main(void) {
 
 	for (int i = 0; i < N; i++) {
 		cin >> str;
-		str = str.substr(4); //4번 index부터 출력
+		str = str.substr(4); //4번 index부터 추출
 		str = str.substr(0, str.size() - 4);
 		words[i] = str;
 	}

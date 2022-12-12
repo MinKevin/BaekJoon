@@ -1,4 +1,11 @@
+/*
+Date : 22.12.11
+Time : 약 2시간...?
+Comment :
+	시간줄이자고 4중for문 사용했는데, 그냥 하는게 나았으려나 싶기도하고
+	익숙하지 않다보니까 머리가 잘 안굴러간다 휴....
 
+*/
 
 #include <iostream>
 #include <string> //stoi header
@@ -44,62 +51,45 @@ int threeBundle() {
 }
 
 void answer(int position) {
+	string networkAddress = "";
+	string networkMask = "";
 	if (position == 0) {
-		for (int i = 0; i < 4; i++) {
-			cout << ip[0][i];
-			if (i != 3)
-				cout << '.';
-			else
-				cout << '\n';
-		}
-		
 		int mask = (1 << 8) - 1;
 		for (int i = 0; i < 4; i++) {
-			cout << mask;
-			if (i != 3)
-				cout << '.';
-			else
-				cout << '\n';
+			networkAddress += to_string(ip[0][i]);
+			networkMask += to_string(mask);
+			if (i != 3) {
+				networkAddress += '.';
+				networkMask += '.';
+			}
 		}
-		return;
+	}
+	else {
+		//int mask = ~((1 << (32 + 1 - position)) - 1);
+		int mask = ~((1 << (8 - (position - 1) % 8)) - 1);
+		//cout << "mask : " << mask << '\n';
+		for (int i = 0; i < 4; i++) {
+			if (position > 8 * (i + 1)) {
+				networkAddress += to_string(ip[0][i]);
+				networkMask += "255";
+			}
+			else if (position <= 8 * i) {
+				networkAddress += '0';
+				networkMask += '0';
+			}
+			else {
+				networkAddress += to_string(ip[0][i] & mask);
+				networkMask += to_string((255 & mask));
+			}
+
+			if (i != 3) {
+				networkAddress += '.';
+				networkMask += '.';
+			}
+		}
 	}
 
-	//int mask = ~((1 << (32 + 1 - position)) - 1);
-	int mask = ~((1 << ( 8 - (position - 1) % 8)) - 1);
-	//cout << "mask : " << mask << '\n';
-	for (int i = 0; i < 4; i++) {
-		if (position > 8 * (i + 1)) {
-			cout << ip[0][i];
-		}
-		else if (position <= 8 * i){
-			cout << '0';
-		}
-		else {
-			cout << (ip[0][i] & mask);
-		}
-
-		if (i != 3)
-			cout << '.';
-		else
-			cout << '\n';
-	}
-
-	for (int i = 0; i < 4; i++) {
-		if (position > 8 * (i + 1)) {
-			cout << "255";
-		}
-		else if (position <= 8 * i) {
-			cout << '0';
-		}
-		else {
-			cout << (255 & mask);
-		}
-		if (i != 3)
-			cout << '.';
-		else
-			cout << '\n';
-	}
-
+	cout << networkAddress << '\n' << networkMask;
 }
 
 int main(void) {
@@ -115,8 +105,6 @@ int main(void) {
 	}
 
 	int position = threeBundle();
-
 	//cout << "position : " << position << '\n';
-
 	answer(position);
 }

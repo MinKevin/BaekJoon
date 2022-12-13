@@ -67,9 +67,6 @@ int main(void) {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 
-	int x = 7;
-	cout << (x & ~(1 << 2)) << '\n';
-
 	cin >> N >> K;
 
 	mask = mask | 1 << ('a' - 'a');

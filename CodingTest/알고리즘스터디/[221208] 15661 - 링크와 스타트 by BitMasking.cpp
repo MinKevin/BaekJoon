@@ -8,7 +8,7 @@ using namespace std;
 
 int N;
 int board[20][20];
-int vis;
+int mask;
 int answer = 0x7FFFFFFF;
 
 int calculateStats(int vis) {

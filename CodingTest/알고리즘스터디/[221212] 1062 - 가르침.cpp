@@ -12,7 +12,7 @@ Comment :
 using namespace std;
 
 int N, K;
-int vis[26];
+int mask[26];
 int alphabetCount = 0;
 int answer;
 string words[50];
@@ -24,7 +24,7 @@ int countWords() {
 		bool isPossible = true;
 		string word = words[i];
 		for (int j = 0; j < word.size(); j++) {
-			if (vis[word[j] - 'a'] == 0) {
+			if (mask[word[j] - 'a'] == 0) {
 				isPossible = false;
 				break;
 			}
@@ -36,19 +36,19 @@ int countWords() {
 }
 
 void dfs(int idx) {
-	vis[idx] = true;
+	mask[idx] = true;
 	alphabetCount++;
 	if (alphabetCount == K) {
 		answer = max(countWords(), answer);
 	}
 	else {
 		for (int i = idx + 1; i < 26; i++) {
-			if (!vis[i]) {
+			if (!mask[i]) {
 				dfs(i);
 			}
 		}
 	}
-	vis[idx] = false;
+	mask[idx] = false;
 	alphabetCount--;
 }
 
@@ -58,11 +58,11 @@ int main(void) {
 
 	cin >> N >> K;
 
-	vis['a' - 'a'] = true;
-	vis['n' - 'a'] = true;
-	vis['t' - 'a'] = true;
-	vis['i' - 'a'] = true;
-	vis['c' - 'a'] = true;
+	mask['a' - 'a'] = true;
+	mask['n' - 'a'] = true;
+	mask['t' - 'a'] = true;
+	mask['i' - 'a'] = true;
+	mask['c' - 'a'] = true;
 	alphabetCount = 5;
 
 	for (int i = 0; i < N; i++) {
@@ -74,7 +74,7 @@ int main(void) {
 
 	answer = countWords();
 	for (int i = 0; i < 26; i++) {
-		if (vis[i] == 0)
+		if (mask[i] == 0)
 			dfs(i);
 	}
 	if (K < 5) {

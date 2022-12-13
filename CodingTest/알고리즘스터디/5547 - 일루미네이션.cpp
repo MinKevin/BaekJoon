@@ -13,7 +13,7 @@ using namespace std;
 
 int W, H;
 int board[100][100];
-int vis[100][100];
+int mask[100][100];
 int dx[6] = { -1, -1, 0, 0, 1, 1 };
 int dyEven[6] = { 0, 1, -1, 1, 0, 1 };
 int dyOdd[6] = { 0, -1, 1, -1, 0, -1 };
@@ -24,8 +24,8 @@ void BFS() {
 
 	for (int i = 0; i < H; i++) {
 		for (int j = 0; j < W; j++) {
-			if (vis[i][j] == 0) {
-				vis[i][j] = 1;
+			if (mask[i][j] == 0) {
+				mask[i][j] = 1;
 				q.push({ i, j });
 				int cnt = 0;
 				bool isOpen = false;
@@ -51,9 +51,9 @@ void BFS() {
 							cnt++;
 						}
 
-						else if (board[nx][ny] == board[cur.first][cur.second] && vis[nx][ny] == 0) {
+						else if (board[nx][ny] == board[cur.first][cur.second] && mask[nx][ny] == 0) {
 							q.push({ nx, ny });
-							vis[nx][ny] = 1;
+							mask[nx][ny] = 1;
 						}
 					}
 				}

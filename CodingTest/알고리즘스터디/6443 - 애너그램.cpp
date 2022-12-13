@@ -15,7 +15,7 @@ Memo :
 using namespace std;
 
 int N;
-int vis[20];
+int mask[20];
 string inp;
 vector<string> answer;
 
@@ -28,14 +28,14 @@ void anagram(int idx, string buf, int length) {
 
 	int repeated[26] = {0,};
 	for (int i = 0; i < length; i++) {
-		if (vis[i] == 0 && repeated[inp[i] - 'a'] == 0) {
-			vis[i] = 1;
+		if (mask[i] == 0 && repeated[inp[i] - 'a'] == 0) {
+			mask[i] = 1;
 			repeated[inp[i] - 'a'] = 1;
 			buf += inp[i];
 			anagram(idx + 1, buf, length);
 			//buf[buf.size() - 1] = '\0';
 			buf.erase(buf.size() - 1);
-			vis[i] = 0;
+			mask[i] = 0;
 		}
 	}
 }

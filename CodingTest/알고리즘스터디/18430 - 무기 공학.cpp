@@ -19,7 +19,7 @@ using namespace std;
 
 int N, M;
 int board[5][5];
-int vis[5][5];
+int mask[5][5];
 int dx[4] = { 0, 1, 0, -1 };
 int dy[4] = { 1, 0, -1, 0 };
 
@@ -32,7 +32,7 @@ void dfs(int cur, int sum) {
 		return;
 	}
 
-	if (vis[cur / M][cur % M] == 0) {
+	if (mask[cur / M][cur % M] == 0) {
 		for (int dir = 0; dir < 4; dir++) {
 
 			int nx1 = cur / M + dx[dir];
@@ -46,11 +46,11 @@ void dfs(int cur, int sum) {
 			if (nx1 < 0 || ny1 < 0 || nx1 >= N || ny1 >= M || nx2 < 0 || ny2 < 0 || nx2 >= N || ny2 >= M)
 				continue;
 
-			if (vis[nx1][ny1] == 1 || vis[nx2][ny2] == 1)
+			if (mask[nx1][ny1] == 1 || mask[nx2][ny2] == 1)
 				continue;
 
 			sum += board[cur / M][cur % M] * 2 + board[nx1][ny1] + board[nx2][ny2];
-			vis[cur / M][cur % M] = vis[nx1][ny1] = vis[nx2][ny2] = 1;
+			mask[cur / M][cur % M] = mask[nx1][ny1] = mask[nx2][ny2] = 1;
 
 			/*
 			for (int i = 0; i < N; i++) {
@@ -64,7 +64,7 @@ void dfs(int cur, int sum) {
 
 			dfs(cur + 1, sum);
 
-			vis[cur / M][cur % M] = vis[nx1][ny1] = vis[nx2][ny2] = 0;
+			mask[cur / M][cur % M] = mask[nx1][ny1] = mask[nx2][ny2] = 0;
 			sum -= board[cur / M][cur % M] * 2 + board[nx1][ny1] + board[nx2][ny2];
 		}
 	}

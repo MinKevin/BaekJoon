@@ -6,7 +6,7 @@ using namespace std;
 
 int N;
 int board[20][20];
-bool vis[20];
+bool mask[20];
 int answer = 0x7FFFFFFF;
 
 int calculateStats() {
@@ -14,10 +14,10 @@ int calculateStats() {
 	int awayStats = 0;
 	for (int i = 0; i < N - 1; i++) {
 		for (int j = i + 1; j < N; j++) {
-			if (!vis[i] && !vis[j]) {
+			if (!mask[i] && !mask[j]) {
 				awayStats += board[i][j] + board[j][i];
 			}
-			else if (vis[i] && vis[j]) {
+			else if (mask[i] && mask[j]) {
 				homeStats += board[i][j] + board[j][i];
 			}
 		}
@@ -33,9 +33,9 @@ void dfs(int idx, int cnt) {
 		answer = min(calculateStats(), answer);
 
 	for (int i = idx; i < N; i++) {
-		vis[i] = true;
+		mask[i] = true;
 		dfs(i + 1, cnt + 1);
-		vis[i] = false;
+		mask[i] = false;
 	}
 }
 

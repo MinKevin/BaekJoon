@@ -12,7 +12,7 @@ using namespace std;
 
 int C, repeat;
 int stats[11][11]; 
-int vis[11];
+int mask[11];
 vector<int> answer;
 
 void dfs(int cur, int sum) {
@@ -26,11 +26,11 @@ void dfs(int cur, int sum) {
 	}
 
 	for (int i = 0; i < 11; i++) {
-		if (stats[cur][i] != 0 && vis[i] == 0) {
-			vis[i] = 1;
+		if (stats[cur][i] != 0 && mask[i] == 0) {
+			mask[i] = 1;
 			sum += stats[cur][i];
 			dfs(cur + 1, sum);
-			vis[i] = 0;
+			mask[i] = 0;
 			sum -= stats[cur][i];
 		}
 	}
@@ -46,7 +46,7 @@ int main(void) {
 			for (int j = 0; j < 11; j++)
 				cin >> stats[i][j];
 
-		memset(vis, 0, sizeof(vis));
+		memset(mask, 0, sizeof(mask));
 
 		dfs(0, 0);
 	}

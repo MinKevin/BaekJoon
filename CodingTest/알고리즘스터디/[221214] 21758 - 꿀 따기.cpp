@@ -27,7 +27,6 @@ int func() {
 	for (int i = N - 2; i > 0; i--) {
 		if (startPoint + memoization[0] - memoization[i] - v[i] > answer) {
 			answer = startPoint + memoization[0] - memoization[i] - v[i];
-			cout << startPoint << ' ' << memoization[0] - memoization[i] - v[i] << '\n';
 		}
 		
 	}

@@ -23,12 +23,12 @@ int mask[5][5];
 int dx[4] = { 0, 1, 0, -1 };
 int dy[4] = { 1, 0, -1, 0 };
 
-int distance_;
+int answer;
 
 void dfs(int cur, int sum) {
 	if (cur == N * M) {
-		if (distance < sum)
-			distance_ = sum;
+		if (answer < sum)
+			answer = sum;
 		return;
 	}
 
@@ -85,5 +85,5 @@ int main(void) {
 
 	dfs(0, 0);
 
-	cout << distance_;
+	cout << answer;
 }

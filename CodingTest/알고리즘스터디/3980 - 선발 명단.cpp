@@ -13,15 +13,15 @@ using namespace std;
 int C, repeat;
 int stats[11][11]; 
 int mask[11];
-vector<int> distance_;
+vector<int> answer;
 
 void dfs(int cur, int sum) {
 	if (cur == 11) {
-		if (distance_.size() == repeat)
-			distance_.push_back(sum);
+		if (answer.size() == repeat)
+			answer.push_back(sum);
 		else //answer.size() == repeat + 1{
-			if (distance_[repeat] < sum)
-				distance_[repeat] = sum;
+			if (answer[repeat] < sum)
+				answer[repeat] = sum;
 		return;
 	}
 
@@ -51,6 +51,6 @@ int main(void) {
 		dfs(0, 0);
 	}
 	
-	for (auto ans : distance_)
+	for (auto ans : answer)
 		cout << ans << '\n';
 }

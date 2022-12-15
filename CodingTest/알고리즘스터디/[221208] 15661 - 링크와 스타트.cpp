@@ -7,7 +7,7 @@ using namespace std;
 int N;
 int board[20][20];
 bool mask[20];
-int distance_ = 0x7FFFFFFF;
+int answer = 0x7FFFFFFF;
 
 int calculateStats() {
 	int homeStats = 0;
@@ -30,7 +30,7 @@ void dfs(int idx, int cnt) {
 		return;
 
 	if (idx != 0)
-		distance_ = min(calculateStats(), distance_);
+		answer = min(calculateStats(), answer);
 
 	for (int i = idx; i < N; i++) {
 		mask[i] = true;
@@ -54,5 +54,5 @@ int main(void) {
 
 	dfs(0, 0);
 
-	cout << distance_;
+	cout << answer;
 }

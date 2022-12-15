@@ -9,7 +9,7 @@ using namespace std;
 int N;
 int board[20][20];
 int mask;
-int distance_ = 0x7FFFFFFF;
+int answer = 0x7FFFFFFF;
 
 int calculateStats(int vis) {
 	int homeStats = 0;
@@ -31,7 +31,7 @@ int calculateStats(int vis) {
 
 void bitMasking() {
 	for (int i = 1; i < (1 << (N - 1)) - 1; i++) {
-		distance_ = min(distance_, calculateStats(i));
+		answer = min(answer, calculateStats(i));
 	}
 }
 
@@ -50,5 +50,5 @@ int main(void) {
 
 	bitMasking();
 
-	cout << distance_;
+	cout << answer;
 }

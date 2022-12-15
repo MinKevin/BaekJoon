@@ -16,7 +16,7 @@ int dist[125][125];
 int dx[4] = { 0, 0, 1, -1 };
 int dy[4] = { 1, -1, 0, 0 };
 
-vector<int> distance_;
+vector<int> answer;
 
 void daijkstra() {
     priority_queue<pair<int, pair<int, int>>> pq;
@@ -46,7 +46,7 @@ void daijkstra() {
             }
         }
     }
-    distance_.push_back(dist[N - 1][N - 1]);
+    answer.push_back(dist[N - 1][N - 1]);
 }
 
 int main(void){
@@ -57,8 +57,8 @@ int main(void){
 		cin >> N;
 		
         if (N == 0) {
-            for (int i = 0; i < distance_.size(); i++) {
-                cout << "Problem " << (i + 1) << ": " << distance_[i] << '\n';;
+            for (int i = 0; i < answer.size(); i++) {
+                cout << "Problem " << (i + 1) << ": " << answer[i] << '\n';;
             }
             break;
         }

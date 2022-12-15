@@ -17,12 +17,12 @@ using namespace std;
 int N;
 int mask[20];
 string inp;
-vector<string> answer;
+vector<string> distance_;
 
 void anagram(int idx, string buf, int length) {
 	if (idx == length) {
 		//cout << buf << '\n';
-		answer.push_back(buf);
+		distance_.push_back(buf);
 		return;
 	}
 
@@ -54,7 +54,7 @@ int main(void) {
 		anagram(0, "", inp.length());
 	}
 
-	for (int i = 0; i < answer.size(); i++) {
-		cout << answer[i] << '\n';
+	for (int i = 0; i < distance_.size(); i++) {
+		cout << distance_[i] << '\n';
 	}
 }

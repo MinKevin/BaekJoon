@@ -31,7 +31,7 @@ int main(void) {
 
 	sort(sortedV.begin(), sortedV.end(), greater<>());
 
-	////중복제거
+	////중복제거 (O(N^2)
 	//vector<int>::iterator it = sortedV.begin();
 	//while (it != sortedV.end()) {
 	//	if (next(it, 1) != sortedV.end() && *it == *next(it, 1)) {
@@ -40,6 +40,7 @@ int main(void) {
 	//	}
 	//	it++;
 	//}
+	//중복제거2 (O(N))
 	sortedV.resize(unique(sortedV.begin(), sortedV.end()) - sortedV.begin());
 
 	for (int i = 0; i < N; i++) {

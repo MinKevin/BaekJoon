@@ -17,7 +17,7 @@ int mask[100][100];
 int dx[6] = { -1, -1, 0, 0, 1, 1 };
 int dyEven[6] = { 0, 1, -1, 1, 0, 1 };
 int dyOdd[6] = { 0, -1, 1, -1, 0, -1 };
-int answer;
+int distance_;
 
 void BFS() {
 	queue<pair<int, int>> q;
@@ -58,10 +58,10 @@ void BFS() {
 					}
 				}
 				if (board[i][j] == 1)
-					answer += cnt;
+					distance_ += cnt;
 				else {
 					if (isOpen == false)
-						answer -= cnt;
+						distance_ -= cnt;
 				}
 			}
 		}
@@ -82,5 +82,5 @@ int main(void) {
 
 	BFS();
 
-	cout << answer;
+	cout << distance_;
 }

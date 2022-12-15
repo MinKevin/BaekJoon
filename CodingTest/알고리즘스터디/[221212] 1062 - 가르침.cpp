@@ -14,7 +14,7 @@ using namespace std;
 int N, K;
 int mask[26];
 int alphabetCount = 0;
-int answer;
+int distance_;
 string words[50];
 string str;
 
@@ -39,7 +39,7 @@ void dfs(int idx) {
 	mask[idx] = true;
 	alphabetCount++;
 	if (alphabetCount == K) {
-		answer = max(countWords(), answer);
+		distance_ = max(countWords(), distance_);
 	}
 	else {
 		for (int i = idx + 1; i < 26; i++) {
@@ -72,13 +72,13 @@ int main(void) {
 		words[i] = str;
 	}
 
-	answer = countWords();
+	distance_ = countWords();
 	for (int i = 0; i < 26; i++) {
 		if (mask[i] == 0)
 			dfs(i);
 	}
 	if (K < 5) {
-		answer = 0;
+		distance_ = 0;
 	}
-	cout << answer;
+	cout << distance_;
 }

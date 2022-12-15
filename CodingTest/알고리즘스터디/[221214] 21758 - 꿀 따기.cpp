@@ -28,16 +28,13 @@ int func() {
 		if (startPoint + memoization[0] - memoization[i] - v[i] > answer) {
 			answer = startPoint + memoization[0] - memoization[i] - v[i];
 		}
-		
 	}
-
 	//꿀이 가운데
 	for (int i = 1; i < N - 1; i++) {
 		if ((memoization[0] - v[0] - memoization[i + 1]) + (memoization[i] - v[N - 1]) > answer)
 			answer = (memoization[0] - v[0] - memoization[i + 1]) + (memoization[i] - v[N - 1]);
 		//cout << (memoization[0] - v[0] - memoization[i + 1]) << ' ' << (memoization[i] - v[N - 1]) <<'\n';
 	}
-
 	return answer;
 }
 
@@ -48,10 +45,8 @@ int main(void) {
 	cin >> N;
 
 	int buf;
-	int sum = 0;
 	for (int i = 0; i < N; i++) {
 		cin >> buf;
-		sum += buf;
 		v.push_back(buf);
 	}
 	memoization = vector<int>(N, 0);

@@ -15,7 +15,7 @@ using namespace std;
 int N;
 int heap[100001];
 int heapCount = 0;
-vector<int> answer;
+vector<int> distance_;
 
 void swap(int* x, int* y) {
 	int tmp = *x;
@@ -86,7 +86,7 @@ int main(void) {
 	while (N--) {
 		cin >> order;
 		if (order == 0)
-			answer.push_back(pop());
+			distance_.push_back(pop());
 		else
 			push(order);
 
@@ -99,6 +99,6 @@ int main(void) {
 		*/
 	}
 
-	for (auto v : answer)
+	for (auto v : distance_)
 		cout << v << '\n';
 }

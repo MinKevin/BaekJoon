@@ -12,11 +12,11 @@ Comment :
 using namespace std;
 
 int N;
-vector<pair<int, int>> v;
+vector<pair<long long, long long>> v;
 long long sum;
 
 int func() {
-	int cur = 0;
+	long long cur = 0;
 	for (int i = 0; i < N; i++) {
 		cur += v[i].second;
 		if (cur >= (sum + 1) / 2) {

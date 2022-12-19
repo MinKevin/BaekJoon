@@ -1,8 +1,11 @@
 /*
 Date : 22.12.16
-Time : 10:17~
+Time : 10:17 ~ 10:58 (41m)
 Comment:
-
+	sort됐을 때, 어떤 식으로 수가 정렬되는지 다시한번 생각해보자.
+	
+	https://www.acmicpc.net/source/52668684
+	이 코드랑 방식은 비슷한데 차이가 왜 날까?
 */
 #include <iostream>
 #include <vector>
@@ -27,7 +30,6 @@ void Solution() {
 			answer += en - st;
 			st = line[i].first;
 			en = line[i].second;
-			continue;
 		}
 		else if (line[i].second > en)
 			en = line[i].second;
@@ -49,10 +51,5 @@ int main(void) {
 	}
 	sort(line.begin(), line.end(), cmp);
 
-	for (int i = 0; i < line.size(); i++) {
-		cout << line[i].first << ' ' << line[i].second << '\n';
-	}
-
 	Solution();
 }
-

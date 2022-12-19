@@ -42,6 +42,5 @@ int main(void) {
 		v.push_back({ start, end });
 	}
 	sort(v.begin(), v.end(), cmp);
-
 	cout << func();
 }

@@ -1,6 +1,6 @@
 /*
 Date : 22.12.19
-Time : 07:43 ~
+Time : 
 Comment :
 */
 
@@ -12,7 +12,6 @@ using namespace std;
 
 int N, M;
 int A[100000];
-int st, en;
 int answer = INT_MAX;
 
 bool cmp(int a, int b) {
@@ -24,19 +23,20 @@ int main(void) {
 	cin.tie(NULL);
 
 	cin >> N >> M;
-	en = N - 1;
 	for (int i = 0; i < N; i++) {
 		cin >> A[i];
 	}
 
 	sort(A, A + N, cmp);
+
 	int en = 0;
 	for (int st = 0; st < N; st++) {
 		while (en < N && A[en] - A[st] < M)
 			en++;
-		if (en == M)
+		if (en == N)
 			break;
 		answer = answer > A[en] - A[st] ? A[en] - A[st] : answer;
 	}
+
 	cout << answer;
 }

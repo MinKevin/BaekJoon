@@ -1,212 +1,73 @@
-﻿#include <iostream>
-#include <cstdio>
-#include <queue>
-#include <cstring>
+/*
+Date : 22.12.18
+Time : 16:45 ~
+Comment :
+
+*/
+#include <iostream>
+#include <vector>
+#include <math.h>
+#include <limits.h>
 
 using namespace std;
 
-int n, m;
-
-int map[102][102];
-int isVisited[102][102];
-
-pair<int, int> evenNear[6] = { {0,-1},{0,1},{1,-1},{1,0},{-1,-1},{-1,0} };
-pair<int, int> oddNear[6] = { {0,-1},{0,1},{1,1},{1,0},{-1,1},{-1,0} };
-
-int isInScope(int i, int j) {
-    return (i >= 1 && i <= n && j >= 1 && j <= m);
-}
-int isOnBorder(int i, int j) {
-    return (i == 1 || i == n || j == 1 || j == m);
-}
-
-int isSurrounded(int x, int y) {
-    queue<pair<int, int>> q;
-    q.push({ x,y });
-    isVisited[x][y] = 1;
-
-    while (!q.empty()) {
-        int frontX = q.front().first, frontY = q.front().second;
-        q.pop();
-
-
-        for (int i = 0; i < 6; i++) {
-            int newX = (frontX + ((frontX % 2 == 0) ? evenNear[i].first : oddNear[i].first));
-            int newY = (frontY + ((frontX % 2 == 0) ? evenNear[i].second : oddNear[i].second));
-
-            if (!isVisited[newX][newY] && map[newX][newY] == 0) {
-                if (isOnBorder(newX, newY)) {
-                    memset(isVisited, 0, sizeof(isVisited));
-                    return 0;
-                };
-                q.push({ newX,newY });
-                isVisited[newX][newY] = 1;
-            }
-        }
-    }
-
-    memset(isVisited, 0, sizeof(isVisited));
-    return 1;
-
+int N, M;
+vector<pair<int, int>> chicken;
+vector<pair<int, int>> selectedChicken;
+vector<pair<int, int>> home;
+int answer = INT_MAX;
+int count_ = 0;
+void calculateDistance() {
+	int totalDistance = 0;
+	for (int i = 0; i < home.size(); i++) {
+		int minDistance = 100;
+		for (int j = 0; j < selectedChicken.size(); j++) {
+			int distance = abs(selectedChicken[j].first - home[i].first) + abs(selectedChicken[j].second - home[i].second);
+			minDistance = minDistance > distance ? distance : minDistance;
+		}
+		totalDistance += minDistance;
+	}
+	if (totalDistance < answer)
+		answer = totalDistance;
 }
 
-int bfs(int x, int y) {
-    int perimeter = 0;
-    queue<pair<int, int>> q;
+void combination(int M, int idx) {
+	if (M == 0) {
+		calculateDistance();
+		return;
+	}
 
-    q.push({ x,y });
-    isVisited[x][y] = 1;
-
-
-    while (!q.empty()) {
-        pair<int, int> front = q.front();
-        q.pop();
-        int i = front.first, j = front.second;
-        // printf("%d %d\n",i,j);
-        perimeter += 6;
-
-
-        if (map[i][j - 1]) {
-            perimeter--;
-            if (!isVisited[i][j - 1]) {
-                isVisited[i][j - 1] = 1;
-                q.push({ i,j - 1 });
-            }
-        }
-        if (map[i][j + 1]) {
-            perimeter--;
-            if (!isVisited[i][j + 1]) {
-                isVisited[i][j + 1] = 1;
-                q.push({ i,j + 1 });
-            }
-        }
-        if (map[i - 1][j]) {
-            perimeter--;
-            if (!isVisited[i - 1][j]) {
-                isVisited[i - 1][j] = 1;
-                q.push({ i - 1,j });
-            }
-        }
-        if (map[i + 1][j]) {
-            perimeter--;
-            if (!isVisited[i + 1][j]) {
-                isVisited[i + 1][j] = 1;
-                q.push({ i + 1,j });
-            }
-        }
-        if (i % 2 == 0) {
-            if (map[i - 1][j - 1]) {
-                perimeter--;
-                if (!isVisited[i - 1][j - 1]) {
-                    isVisited[i - 1][j - 1] = 1;
-                    q.push({ i - 1,j - 1 });
-                }
-            }
-            if (map[i + 1][j - 1]) {
-                perimeter--;
-                if (!isVisited[i + 1][j - 1]) {
-                    isVisited[i + 1][j - 1] = 1;
-                    q.push({ i + 1,j - 1 });
-                }
-            }
-
-        }
-        else {
-            if (map[i - 1][j + 1]) {
-                perimeter--;
-                if (!isVisited[i - 1][j + 1]) {
-                    isVisited[i - 1][j + 1] = 1;
-                    q.push({ i - 1,j + 1 });
-                }
-            }
-            if (map[i + 1][j + 1]) {
-                perimeter--;
-                if (!isVisited[i + 1][j + 1]) {
-                    isVisited[i + 1][j + 1] = 1;
-                    q.push({ i + 1,j + 1 });
-                }
-            }
-        }
-
-
-
-    }
-    return perimeter;
+	for (int i = idx; i < chicken.size() - (M - 1); i++) {
+		count_++;
+		selectedChicken.push_back(chicken[i]);
+		combination(M - 1, i + 1); //idx + 1이 아니라 i + 1임...ㅠㅠ
+		selectedChicken.pop_back();
+	}
 }
 
-int checkSurrounded(int x, int y) {
-    queue<pair<int, int>> q;
-    q.push({ x,y });
-    isVisited[x][y] = 1;
-
-    while (!q.empty()) {
-        int frontX = q.front().first, frontY = q.front().second;
-        q.pop();
-        map[frontX][frontY] = 1;
 
 
-        for (int i = 0; i < 6; i++) {
-            int newX = frontX + ((frontX % 2 == 0) ? evenNear[i].first : oddNear[i].first);
-            int newY = frontY + ((frontX % 2 == 0) ? evenNear[i].second : oddNear[i].second);
+int main(void) {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
 
-            if (!isVisited[newX][newY] && map[newX][newY] == 0) {
-                q.push({ newX,newY });
-                isVisited[newX][newY] = 1;
-            }
-        }
-    }
-    memset(isVisited, 0, sizeof(isVisited));
+	cin >> N >> M;
 
-    return 0;
-}
+	int input;
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < N; j++) {
+			cin >> input;
+			if (input == 1) {
+				home.push_back({ i, j });
+			}
+			else if (input == 2) {
+				chicken.push_back({ i, j });
+			}
+		}
+	}
 
-int main()
-{
-    int totalPerimeter = 0;
-    scanf_s("%d %d", &m, &n);
+	combination(M, 0);
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            scanf_s("%d", &map[i][j]);
-        }
-    }
-
-
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            if (map[i][j] == 0 && isSurrounded(i, j)) {
-                checkSurrounded(i, j);
-            }
-        }
-    }
-
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            if (!isVisited[i][j] && map[i][j]) {
-                int buf = bfs(i, j);
-                //cout << buf << '\n';
-                totalPerimeter += buf;
-            }
-
-        }
-    }
-
-    // for(int i=1;i<=n;i++){
-    //     for(int j=1;j<=m;j++){
-    //         printf("%d ",map[i][j]);
-    //     }
-    //     printf("\n");
-    // }
-    printf("\n\n");
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            printf("%d ", map[i][j]);
-        }
-        printf("\n");
-    }
-
-    printf("%d\n", totalPerimeter);
-
-
-    return 0;
+	cout << answer << '\n';
+	cout << count_;
 }

@@ -16,14 +16,15 @@ struct comp {
 	}
 };
 
-int N, minDif = INT_MAX;
-vector<int> water, answer(3, 0);
+int N;
+long long minDif = LLONG_MAX;
+vector<long long> water, answer(3, 0);
 
 void Solution() {
 	for (int i = 0; i < N - 2; i++) {
 		int st = i + 1, end = N - 1;
 		while (st < end) {
-			int sum = water[i] + water[st] + water[end];
+			long long sum = water[i] + water[st] + water[end];
 			if (abs(sum) < minDif) {
 				minDif = abs(sum);
 				answer[0] = water[i];

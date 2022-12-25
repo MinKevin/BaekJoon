@@ -34,7 +34,7 @@ void Solution() {
 		//	st = mid + 1;
 		//}
 	}
-	cout << st;
+	cout << answer;
 }
 
 int main(void) {

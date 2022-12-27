@@ -21,7 +21,6 @@ void dfs(int cur, int cnt) {
 	vis[cur] = 1;
 	for (int i = 0; i < v[cur].size(); i++) {
 		if (vis[v[cur][i]] == 0) {
-			vis[v[cur][i]] = 1;
 			cout << v[cur][i] << ' ';
 			dfs(v[cur][i], cnt + 1);
 		}
@@ -32,7 +31,6 @@ void bfs() {
 	queue<int> q;
 	q.push(V);
 	vis[V] = 1;
-	int cnt = 1;
 	cout << V << ' ';
 	while (!q.empty()) {
 		int cur = q.front();

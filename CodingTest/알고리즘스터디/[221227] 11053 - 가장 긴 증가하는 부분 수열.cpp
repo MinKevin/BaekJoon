@@ -1,8 +1,8 @@
 /*
 Date : 22.12.27
-Time : 10:53 ~
+Time : 10:53 ~ 11:14 (23m)
 Comment :
-
+	메모이제이션 비슷한 개념
 */
 
 #include <iostream>

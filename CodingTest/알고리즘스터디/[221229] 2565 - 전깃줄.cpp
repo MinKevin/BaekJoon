@@ -71,6 +71,6 @@ int main(void) {
 	}
 
 	for (int i = answer.size() - 1; i >= 0; i--) {
-		cout << answer[i] << ' ';
+		//cout << answer[i] << ' ';
 	}
 }

@@ -6,7 +6,7 @@ using namespace std;
 int n, k;
 vector<int> v;
 int dp[10001];
-
+//input 3 2 3 5 
 void func() {
 	dp[0] = 1;
 	for (int i = 0; i < n; i++) {

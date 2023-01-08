@@ -22,7 +22,7 @@ void func() {
 		if (expectedDate > N + 1)
 			continue;
 
-		cout << answer + v[i].second << ' ';
+		//cout << answer + v[i].second << ' ';
 		if (answer + v[i].second > maxIncome[expectedDate])
 			maxIncome[expectedDate] = answer + v[i].second;
 	}

@@ -3,8 +3,6 @@
 using namespace std;
 
 int  N, M, K, x, y;
-int dx[2] = { 0, 1 };
-int dy[2] = { 1, 0 };
 
 vector<vector<int>> board;
 

@@ -38,12 +38,4 @@ int main(void) {
 
 
 	cout << func() << '\n';
-
-	for (int i = 0; i <= 100; i++) {
-		for (int j = 0; j <= 20; j++) {
-			//cout << dp[i][j];
-		}
-		//cout << '\n';
-	}
-
 }

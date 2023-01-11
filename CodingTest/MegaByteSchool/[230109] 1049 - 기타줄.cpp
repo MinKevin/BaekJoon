@@ -5,6 +5,7 @@ using namespace std;
 
 int N, M, answer;
 int min6 = INT_MAX, min1 = INT_MAX;
+
 int func() {
 	answer += (N / 6) * min6;
 	answer += (N % 6) * min1 > min6 ? min6 : (N % 6) * min1;

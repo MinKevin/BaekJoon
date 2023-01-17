@@ -7,50 +7,48 @@
 
 using namespace std;
 
-int V, E, K;
-vector<pair<int, int>> node[20005];
-int val[20005];
-priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+vector<pair<int, int> > node[20005];
+priority_queue<pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > >pq;
+int value[20005];
 
-int main(void) {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-
-	cin >> V >> E >> K;
-
+int main() {
+	int n, e, k;
 	int u, v, w;
-	for (int i = 0; i < E; i++) {
+
+	cin >> n >> e >> k;
+
+	for (int i = 0; i < e; i++) {
 		cin >> u >> v >> w;
 		node[u].push_back(make_pair(v, w));
 	}
 
-	for (int i = 1; i <= V; i++) {
-		val[i] = INT_MAX;
-	}
-	val[K] = 0;
-	pq.push(make_pair(K, 0));
+	for (int i = 1; i <= n; i++)
+		value[i] = INF;
+
+	value[k] = 0;
+
+	pq.push(make_pair(0, k));
 
 	while (!pq.empty()) {
-		int loc = pq.top().first;
-		int sumDis = pq.top().second;
+		int x = pq.top().first;
+		int U = pq.top().second;
 		pq.pop();
-		cout << loc << ' ' << sumDis << '\n';
-		for (int i = 0; i < node[loc].size(); i++) {
-			int nextLoc = node[loc][i].first;
-			int w = node[loc][i].second;
 
-			if (sumDis + w < val[nextLoc]) {
-				val[nextLoc] = sumDis + w;
-				pq.push(make_pair(nextLoc, sumDis + w));
+		for (int i = 0; i < node[U].size(); i++) {
+			int V = node[U][i].first;
+			int W = node[U][i].second;
+
+			if (x + W < value[V]) {
+				value[V] = x + W;
+				pq.push(make_pair(x + W, V));
 			}
 		}
 	}
 
-	for (int i = 1; i <= V; i++) {
-		if (val[i] == INT_MAX) {
+	for (int i = 1; i <= n; i++)
+		if (value[i] == INF)
 			cout << "INF\n";
-		}
 		else
-			cout << val[i] << '\n';
-	}
+			cout << value[i] << '\n';
+	return 0;
 }

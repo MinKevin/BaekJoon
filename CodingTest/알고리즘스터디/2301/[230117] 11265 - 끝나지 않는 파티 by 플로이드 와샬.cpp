@@ -9,6 +9,7 @@ int N, M;
 vector<vector<int>> floyd;
 vector<string> answer;
 
+//n^3
 void FloydWarshall() {
 	for (int by = 0; by < N; by++) {
 		for (int from = 0; from < N; from++) {
@@ -18,7 +19,7 @@ void FloydWarshall() {
 			}
 		}
 	}
-}
+}//from by to
 
 int main(void) {
 	ios::sync_with_stdio(false);

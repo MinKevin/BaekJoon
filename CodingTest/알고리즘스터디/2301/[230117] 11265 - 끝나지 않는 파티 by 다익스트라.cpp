@@ -11,6 +11,7 @@ vector<vector<int>> val;
 vector<string> answer;
 priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
 
+//n*nlogn
 void daijkstra() {
 	for (int from = 0; from < N; from++) {
 		pq.push({ 0, from });

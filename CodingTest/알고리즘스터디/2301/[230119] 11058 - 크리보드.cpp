@@ -19,7 +19,7 @@ long long func(int N) {
 	dp[5] = 5;
 	dp[6]= 6;
 
-	for (int i = 4; i <= N; i++) {
+	for (int i = 7; i <= N; i++) {
 		for (int j = 3; j < 6; j++) {
 			dp[i] = max(dp[i], dp[i - j] * (j - 1));
 		}

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <limits>
+#include <limits.h>
 #include <algorithm>
 
 using namespace std;
@@ -23,12 +23,12 @@ void func() {
 		}
 	}
 
-	for (int i = 1; i <= N; i++) {
-		for (int j = 1; j <= N; j++) {
-			cout << floyd[i][j] << ' ';
-		}
-		cout << '\n';
-	}
+	//for (int i = 1; i <= N; i++) {
+	//	for (int j = 1; j <= N; j++) {
+	//		cout << floyd[i][j] << ' ';
+	//	}
+	//	cout << '\n';
+	//}
 
 	int min = INT_MAX;
 	for (int i = 1; i <= N; i++) {

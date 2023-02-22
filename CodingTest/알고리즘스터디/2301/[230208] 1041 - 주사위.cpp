@@ -34,7 +34,7 @@ ll func() {
 			}
 		}
 	}
-	cout << minOneSide << ' ' << minTwoSide << ' ' << minThreeSide << '\n';
+	//cout << minOneSide << ' ' << minTwoSide << ' ' << minThreeSide << '\n';
 	/*
 	N ^ 3개의 주사위 일 때,
 	1면 => (N - 2)^2 * 5 + (N - 2) * 4;
@@ -72,10 +72,6 @@ int main(void) {
 	for (int i = 0; i < 6; i++) {
 		cin >> input;
 		v[i].first = input;
-	}
-
-	for (int i = 0; i < 6; i++) {
-		cout << v[i].first << ", " << v[i].second << '\n';
 	}
 
 	cout << func();

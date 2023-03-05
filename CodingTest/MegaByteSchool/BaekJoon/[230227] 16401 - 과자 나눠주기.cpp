@@ -25,7 +25,6 @@ int solution(int max) {
 			en = mid - 1;
 		}
 	}
-
 	return ans;
 }
 

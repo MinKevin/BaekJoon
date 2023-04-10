@@ -30,22 +30,6 @@ void type1() {
 	
 	int loc = 0;
 	while (true) {
-		/*if (ans.size() == 2) {
-			cout << "HERE\n";
-		}
-
-		if (buf == 1) {
-			if (k == 2) {
-				ans.push_back(dq.back());
-				ans.push_back(dq.front());
-			}
-			else if (k == 1) {
-				ans.push_back(dq.front());
-				ans.push_back(dq.back());
-			}
-			break;
-		}*/
-
 		long long quotient, remainder;
 		quotient = k / buf;
 		remainder = k % buf;

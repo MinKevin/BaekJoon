@@ -22,7 +22,6 @@ int solution() {
 	while (!pq.empty()) {
 		tuple<int, int, int> cur = pq.top();
 		pq.pop();
-		cout << get<0>(cur) << ' ' << get<1>(cur) << ' ' << get<2>(cur) << '\n';
 		for (int dir = 0; dir < 4; dir++) {
 			int nx = get<1>(cur) + dx[dir];
 			int ny = get<2>(cur) + dy[dir];

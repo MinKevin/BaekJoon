@@ -37,6 +37,5 @@ int main(void) {
 			cin >> board[i][j];
 		}
 	}
-
 	solution();
 }

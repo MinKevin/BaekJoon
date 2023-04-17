@@ -1,10 +1,10 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 int solution() {
 
-	return ;
+	return 0;
 }
 
 int main(void) {
@@ -12,4 +12,8 @@ int main(void) {
 	cin.tie(NULL);
 
 	cout << solution();
+
+	string str = "abcd";
+
+	cout << str.find("b", 1);
 }

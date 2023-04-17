@@ -15,7 +15,6 @@ int dy[4] = { 1, -1, 0, 0 };
 priority_queue<t, vector<t>, greater<t>> pq;
 
 int solution() {
-
 	pq.push({ 1, 0, 0 });
 	vis[0][0] = 1;
 

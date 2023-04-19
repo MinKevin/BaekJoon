@@ -59,7 +59,7 @@ int recur(int x, int y, int t) {
 			}
 		}
 		for (int k = loc; k < (x >= y ? y : x); k++) {
-			int *val = &(x >= y ? arr[i][k] : arr[k][i]);
+			int* val = &(x >= y ? arr[i][k] : arr[k][i]);
 			if (*val != 0)
 				*val = 0;
 		}
@@ -67,23 +67,11 @@ int recur(int x, int y, int t) {
 			maxLoc = loc;
 	}
 
-	//cout << '\n';
-	//for (int i = 0; i < 10; i++) {
-	//	for (int j = 0; j < 10; j++) {
-	//		if (arr[i][j] != 0)
-	//			cout << arr[i][j] << ' ';
-	//		else
-	//			cout << "  ";
-	//	}
-	//	cout << '\n';
-	//}
-	//cout << '\n';
-
 	if (arr[r - 1][c - 1] == k) {
 		return t;
 	}
 
-	return x >= y ? recur(x, maxLoc, t + 1) : recur(maxLoc, y, t + 1);	
+	return x >= y ? recur(x, maxLoc, t + 1) : recur(maxLoc, y, t + 1);
 }
 
 int solution() {

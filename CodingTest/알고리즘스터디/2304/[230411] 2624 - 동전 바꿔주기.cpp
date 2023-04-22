@@ -1,36 +1,17 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
 int T, k;
-vector<pair<int, int>> arr;
-int ans;
-int sum;
+vector<vector<int>> v;
+int* ptr[10001];
 
-bool cmp(pair<int, int> a, pair<int, int> b) {
-	return a.first > b.first;
+int solution() {
+
+	return 0;
 }
-
-void recur(int depth, int remainder) {
-	if (depth == k )
-		return;
-	
-		
-
-	int range = min(remainder / arr[depth].first, arr[depth].second);
-	for (int i = 0; i <= range; i++) {
-		int buf = arr[depth].first * i;
-		if (buf < remainder) {
-			recur(depth + 1, remainder - buf);
-			continue;
-		}
-		if (buf == remainder) 
-			ans++;
-		break;		
-	}
-}
+int arr[100][100];
 
 int main(void) {
 	ios::sync_with_stdio(false);
@@ -38,15 +19,16 @@ int main(void) {
 
 	cin >> T >> k;
 
+	v.resize(k + 1, vector<int>(T + 1, -1));
+
 	int p, n;
 	for (int i = 0; i < k; i++) {
 		cin >> p >> n;
-		arr.push_back({ p, n });
+		ptr[p] = &v[i + 1][0];
+		for (int j = 1; j <= n; j++) {
+			v[i + 1][p * j] = 1;		
+		}
 	}
-
-	sort(arr.begin(), arr.end(), cmp);
-
-	recur(0, T);
-
-	cout << ans;
+	
+	cout << solution();
 }

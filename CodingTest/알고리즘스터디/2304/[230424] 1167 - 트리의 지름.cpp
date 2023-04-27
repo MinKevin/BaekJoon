@@ -50,11 +50,12 @@ pair<int, int> dfs(int now) {
 int solution() {
 	vis[1] = true;
 	pair<int, int> result = dfs(1);
-	cout << result.first << ' ' << result.second << '\n';
+	//cout << result.first << ' ' << result.second << '\n';
 	
 	fill(vis.begin(), vis.end(), false);
 	vis[result.first] = true;
 	result = dfs(result.first);
+
 	return result.second;
 }
 

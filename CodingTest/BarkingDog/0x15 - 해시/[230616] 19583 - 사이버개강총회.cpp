@@ -30,7 +30,6 @@ int solution() {
 		id = inp.substr(6);
 		Time.erase(2, 1);
 		time = stoi(Time);
-		cout << time << '\n';
 		if (time <= s) {
 			if (mp.find(id) == mp.end()) {
 				mp.insert({ id, {true, false} });

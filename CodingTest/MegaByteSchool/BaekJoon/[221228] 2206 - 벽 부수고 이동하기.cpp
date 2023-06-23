@@ -13,7 +13,7 @@ using namespace std;
 
 int N, M;
 string board[1000];
-int vis[1000][1000][2];
+int kindsCnt[1000][1000][2];
 int dx[4] = { 0, 0, 1, -1 };
 int dy[4] = { 1, -1, 0, 0 };
 void BFS() {
@@ -24,7 +24,7 @@ void BFS() {
 
 	queue<tuple<int, int, int>> q;
 	q.push({ 0 ,0, 0 });
-	vis[0][0][0] = 1;
+	kindsCnt[0][0][0] = 1;
 
 	while (!q.empty()) {
 		tuple<int, int, int> cur = q.front();
@@ -38,17 +38,17 @@ void BFS() {
 				continue;
 
 			if (nx == N - 1 && ny == M - 1) {
-				cout << vis[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
+				cout << kindsCnt[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
 				return;
 			}
 
-			if (board[nx][ny] == '0' && vis[nx][ny][get<2>(cur)] == 0) {
-				vis[nx][ny][get<2>(cur)] = vis[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
+			if (board[nx][ny] == '0' && kindsCnt[nx][ny][get<2>(cur)] == 0) {
+				kindsCnt[nx][ny][get<2>(cur)] = kindsCnt[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
 				q.push({ nx, ny, get<2>(cur) });
 			}
 
 			else if (board[nx][ny] == '1' && get<2>(cur) == 0) {
-				vis[nx][ny][1] = vis[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
+				kindsCnt[nx][ny][1] = kindsCnt[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
 				q.push({ nx, ny, 1 });
 			}
 		}

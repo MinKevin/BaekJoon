@@ -7,12 +7,12 @@ using namespace std;
 
 int t, n;
 vector<pair<int, int>> loc;
-vector<int> vis;
+vector<int> kindsCnt;
 vector<vector<int>> dis;
 vector<string> answer;
 string func() {
 	dis = vector<vector<int>>(n + 2, vector<int>(n + 2, 0));
-	vis = vector<int>(n + 2, 0);
+	kindsCnt = vector<int>(n + 2, 0);
 	for (int i = 0; i < n + 2; i++) {
 		for (int j = 0; j < n + 2; j++) {
 			dis[i][j] = abs(loc[i].first - loc[j].first)
@@ -27,7 +27,7 @@ string func() {
 
 	queue<int> q;
 	q.push(0);
-	vis[0] = 1;
+	kindsCnt[0] = 1;
 	while (!q.empty()) {
 		int cur = q.front();
 		q.pop();
@@ -38,8 +38,8 @@ string func() {
 		}
 
 		for (int i = 0; i < n + 1; i++) {
-			if (vis[i] == 0 && dis[cur][i] <= 1000) {
-				vis[i] = 1;
+			if (kindsCnt[i] == 0 && dis[cur][i] <= 1000) {
+				kindsCnt[i] = 1;
 				q.push(i);
 			}
 		}

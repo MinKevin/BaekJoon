@@ -5,7 +5,7 @@
 using namespace std;
 
 int N, M;
-int arr[8], vis[8];
+int arr[8], kindsCnt[8];
 vector<int> answer;
 
 void recur(int cur) {
@@ -18,13 +18,13 @@ void recur(int cur) {
 
 	int exValue = 0;
 	for (int i = 0; i < N; i++) {
-		if (vis[i] == 0 && exValue != arr[i]) {
+		if (kindsCnt[i] == 0 && exValue != arr[i]) {
 			answer.push_back(arr[i]);
-			vis[i] = 1;
+			kindsCnt[i] = 1;
 			exValue = arr[i];
 			recur(cur + 1);
 			answer.pop_back();
-			vis[i] = 0;
+			kindsCnt[i] = 0;
 		}
 
 	}

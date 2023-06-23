@@ -8,17 +8,17 @@ using namespace std;
 
 int N, M;
 vector<int> board[10001];
-int vis[10001];
+int kindsCnt[10001];
 int dp[10001];
 int maxCnt = 0;
 
 int func(int target) {
-	vis[target] = 1;
+	kindsCnt[target] = 1;
 	int answer = 1;
 	queue<int> q;
 	for (int i = 0; i < board[target].size(); i++) {
-		if (vis[board[target][i]] == 0) {
-			vis[board[target][i]] = 1;
+		if (kindsCnt[board[target][i]] == 0) {
+			kindsCnt[board[target][i]] = 1;
 			q.push(board[target][i]);
 			answer++;
 		}
@@ -29,8 +29,8 @@ int func(int target) {
 		q.pop();
 
 		for (int i = 0; i < board[cur].size(); i++) {
-			if (vis[board[cur][i]] == 0) {
-				vis[board[cur][i]] = 1;
+			if (kindsCnt[board[cur][i]] == 0) {
+				kindsCnt[board[cur][i]] = 1;
 				q.push(board[cur][i]);
 				answer++;
 			}
@@ -56,7 +56,7 @@ int main(void) {
 			dp[i] = func(i);
 			if (dp[i] > maxCnt)
 				maxCnt = dp[i];
-			memset(vis, 0, (N + 1) * 4);
+			memset(kindsCnt, 0, (N + 1) * 4);
 		}
 	}
 

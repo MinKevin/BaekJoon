@@ -5,7 +5,7 @@
 using namespace std;
 
 int board[50][50];
-int vis[50][50];
+int kindsCnt[50][50];
 
 int dx[4] = { 0, 0, 1, -1 };
 int dy[4] = { 1, -1, 0, 0 };
@@ -16,7 +16,7 @@ int BFS() {
 	int cnt = 0;
 	cin >> M >> N >> K;
 	memset(board, 0, sizeof(board));
-	fill(&vis[0][0], &vis[49][50], 0);
+	fill(&kindsCnt[0][0], &kindsCnt[49][50], 0);
 
 	while (K--) {
 		int X, Y;
@@ -26,8 +26,8 @@ int BFS() {
 
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
-			if (board[i][j] == 1 && vis[i][j] == 0) {
-				vis[i][j] = 1;
+			if (board[i][j] == 1 && kindsCnt[i][j] == 0) {
+				kindsCnt[i][j] = 1;
 				cnt++;
 				queue<pair<int, int>> q;
 				q.push({ i, j });
@@ -44,9 +44,9 @@ int BFS() {
 						if (nx < 0 || nx >= N || ny < 0 || ny >= M)
 							continue;
 
-						if (board[nx][ny] == 1 && vis[nx][ny] == 0) {
+						if (board[nx][ny] == 1 && kindsCnt[nx][ny] == 0) {
 							q.push({ nx, ny });
-							vis[nx][ny] = 1;
+							kindsCnt[nx][ny] = 1;
 						}
 					}
 				}

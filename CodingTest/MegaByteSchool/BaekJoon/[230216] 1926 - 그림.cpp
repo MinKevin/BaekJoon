@@ -6,7 +6,7 @@ using namespace std;
 int n, m;
 int cnt, area;
 int board[500][500];
-int vis[500][500];
+int kindsCnt[500][500];
 int dx[4] = { 0, 0, 1, -1 };
 int dy[4] = { 1, -1, 0, 0 };
 
@@ -14,8 +14,8 @@ void bfs() {
 	queue<pair<int, int>> q;
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
-			if (board[i][j] == 1 && vis[i][j] == 0) {
-				vis[i][j] = 1;
+			if (board[i][j] == 1 && kindsCnt[i][j] == 0) {
+				kindsCnt[i][j] = 1;
 				q.push({ i, j });
 				cnt++;
 				int bufArea = 1;
@@ -30,8 +30,8 @@ void bfs() {
 						if (nx < 0 || nx >= n || ny < 0 || ny >= m)
 							continue;
 
-						if (board[nx][ny] == 1 && vis[nx][ny] == 0) {
-							vis[nx][ny] = 1;
+						if (board[nx][ny] == 1 && kindsCnt[nx][ny] == 0) {
+							kindsCnt[nx][ny] = 1;
 							q.push({ nx, ny });
 							bufArea++;
 						}

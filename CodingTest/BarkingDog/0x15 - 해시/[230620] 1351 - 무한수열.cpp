@@ -1,5 +1,5 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <string.h>
 
 #define ll unsigned long long
@@ -8,7 +8,7 @@ using namespace std;
 
 
 ll N, P, Q;
-map<ll, ll> mp;
+unordered_map<ll, ll> mp;
 
 void input() {
 	cin >> N >> P >> Q;

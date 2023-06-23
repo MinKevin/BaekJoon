@@ -12,13 +12,13 @@ using namespace std;
 
 int K, W, H;
 int board[200][200];
-int vis[200][200][31];
+int kindsCnt[200][200][31];
 int dx[12] = { 0, 0, 1, -1, 1, 1, 2, 2, -1, -1, -2, -2 };
 int dy[12] = { 1, -1, 0, 0, -2, 2, -1, 1, -2, 2, -1, 1 };
 int bfs() {
 	queue<tuple<int, int, int>> q;
 	q.push({ 0, 0, 0 });
-	vis[0][0][0] = 1;
+	kindsCnt[0][0][0] = 1;
 
 	while(!q.empty()) {
 		if (W == 1 && H == 1) {
@@ -37,20 +37,20 @@ int bfs() {
 
 			if (nx == H - 1 && ny == W - 1) {
 				if (dir < 4)
-					return vis[get<0>(cur)][get<1>(cur)][get<2>(cur)];
+					return kindsCnt[get<0>(cur)][get<1>(cur)][get<2>(cur)];
 				else if (get<2>(cur) < K)
-					return vis[get<0>(cur)][get<1>(cur)][get<2>(cur)];
+					return kindsCnt[get<0>(cur)][get<1>(cur)][get<2>(cur)];
 			}
 
 			if (dir < 4) {
-				if (board[nx][ny] == 0 && vis[nx][ny][get<2>(cur)] == 0) {
-					vis[nx][ny][get<2>(cur)] = vis[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
+				if (board[nx][ny] == 0 && kindsCnt[nx][ny][get<2>(cur)] == 0) {
+					kindsCnt[nx][ny][get<2>(cur)] = kindsCnt[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
 					q.push({ nx, ny, get<2>(cur) });
 				}
 			}
 			else {
-				if (get<2>(cur) < K && board[nx][ny] == 0 && vis[nx][ny][get<2>(cur) + 1] == 0) {
-					vis[nx][ny][get<2>(cur) + 1] = vis[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
+				if (get<2>(cur) < K && board[nx][ny] == 0 && kindsCnt[nx][ny][get<2>(cur) + 1] == 0) {
+					kindsCnt[nx][ny][get<2>(cur) + 1] = kindsCnt[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
 					q.push({ nx, ny, get<2>(cur) + 1 });
 				}
 			}

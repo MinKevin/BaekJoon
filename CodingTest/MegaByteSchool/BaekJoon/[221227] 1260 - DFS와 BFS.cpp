@@ -14,13 +14,13 @@ using namespace std;
 
 int N, M, V;
 vector<vector<int>> v;
-int vis[1001];
+int kindsCnt[1001];
 int visM[1001][1001];
 
 void dfs(int cur, int cnt) {
-	vis[cur] = 1;
+	kindsCnt[cur] = 1;
 	for (int i = 0; i < v[cur].size(); i++) {
-		if (vis[v[cur][i]] == 0) {
+		if (kindsCnt[v[cur][i]] == 0) {
 			cout << v[cur][i] << ' ';
 			dfs(v[cur][i], cnt + 1);
 		}
@@ -30,15 +30,15 @@ void dfs(int cur, int cnt) {
 void bfs() {
 	queue<int> q;
 	q.push(V);
-	vis[V] = 1;
+	kindsCnt[V] = 1;
 	cout << V << ' ';
 	while (!q.empty()) {
 		int cur = q.front();
 		q.pop();
 
 		for (int i = 0; i < v[cur].size(); i++) {
-			if (vis[v[cur][i]] == 0) {
-				vis[v[cur][i]] = 1;
+			if (kindsCnt[v[cur][i]] == 0) {
+				kindsCnt[v[cur][i]] = 1;
 				q.push(v[cur][i]);
 				cout << v[cur][i] << ' ';
 			}
@@ -73,6 +73,6 @@ int main(void) {
 	dfs(V, 1);
 	cout << '\n';
 
-	memset(vis, 0, sizeof(vis)); // N * sizeof(int);
+	memset(kindsCnt, 0, sizeof(kindsCnt)); // N * sizeof(int);
 	bfs();
 }

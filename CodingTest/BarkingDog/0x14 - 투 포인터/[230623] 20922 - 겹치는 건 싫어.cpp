@@ -32,7 +32,7 @@ int solution() {
 				overK.insert(num);
 			else {
 				ans = max(ans, length);
-				cout << "ans : " << ans << ' ' << en << '\n';
+				//cout << "ans : " << ans << ' ' << en << '\n';
 			}
 		}
 

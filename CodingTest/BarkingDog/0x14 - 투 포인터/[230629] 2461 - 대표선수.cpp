@@ -69,11 +69,6 @@ int solution() {
 		}
 		else {//cntClass == N
 			if (ans > max - min) {
-				//cout << min << ' ' << max << '\n';
-				//for (auto s : storeStat)
-				//	cout << s << ' ';
-				//cout << '\n';
-				//cout << "cntClass : " << cntClass << "\n\n";
 				ans = max - min;
 			}
 

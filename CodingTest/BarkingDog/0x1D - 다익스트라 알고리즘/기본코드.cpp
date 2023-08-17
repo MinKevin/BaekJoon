@@ -13,7 +13,7 @@ int d[20005];
 int V = 10;
 
 void dijkstra_naive(int st) {
-	fill(d, d + V + 1, INF); //ÃÖ´Ü °Å¸® Å×ÀÌºí ÃÊ±âÈ­
+	fill(d, d + V + 1, INF); //ìµœë‹¨ ê±°ë¦¬ í…Œì´ë¸” ì´ˆê¸°í™”
 	d[st] = 0;
 	while (true) {
 		int idx = -1;
@@ -22,7 +22,7 @@ void dijkstra_naive(int st) {
 			if (idx == -1) idx = i;
 			else if (d[i] < d[idx]) idx = i;
 		}
-		if (idx == -1 || d[idx] == INF) //´õ ÀÌ»ó ¼±ÅÃÇÒ Á¤Á¡ÀÌ ¾øÀ¸¸é
+		if (idx == -1 || d[idx] == INF) //ë” ì´ìƒ ì„ íƒí•  ì •ì ì´ ì—†ìœ¼ë©´
 			break;
 		fix[idx] = 1;
 		for (auto nxt : adj[idx])
@@ -30,6 +30,12 @@ void dijkstra_naive(int st) {
 	}
 }
 
+void Dijkstra() {
+	for (int i = 1; i <= V; i++)
+		Dist[i] = MAP[Start][i];
+	Dist[Start] = 0;
+	Select[Start] = true;
+}
 
 int main(void) {
 	ios::sync_with_stdio(false);

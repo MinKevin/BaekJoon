@@ -27,7 +27,7 @@ int solution() {
 			int l = a + 1;
 			int r = b - 1;
 
-			while (l < r) {
+			while (l < r) {   
 				int scdSnowMan = v[l] + v[r];
 				ans = min(ans, abs(fstSnowMan - scdSnowMan));
 				if (fstSnowMan < scdSnowMan)
@@ -38,7 +38,6 @@ int solution() {
 
 		}
 	}
-
 	return ans;
 }
 

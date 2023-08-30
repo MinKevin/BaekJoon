@@ -54,7 +54,6 @@ int solution() {
 
 	int ans = 0;
 	for (int i = 1; i <= N; i++) {
-		cout << value[i] << ' ' << reverseValue[i] << '\n';
 		if (ans < value[i] + reverseValue[i])
 			ans = value[i] + reverseValue[i];
 	}
